@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bbec5b1-4db1-4b64-9550-8088f37e5b90" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/scala_sdk_2_11_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/scala_sdk_2_11_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6bbec5b1-4db1-4b64-9550-8088f37e5b90" name="Default" comment="" />
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -110,6 +104,11 @@
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="_posts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -809,12 +808,12 @@
       <workItem from="1524043234750" duration="551000" />
       <workItem from="1524044132778" duration="167000" />
       <workItem from="1524044319825" duration="47000" />
-      <workItem from="1524044386851" duration="785000" />
+      <workItem from="1524044386851" duration="1520000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47409000" />
+    <option name="totallyTimeSpent" value="48144000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -829,7 +828,7 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5040453" side_tool="true" weight="0.15393795" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5048544" side_tool="true" weight="0.15393795" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32928804" />
       <window_info anchor="bottom" id="JRebel Executor" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -846,7 +845,7 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297619" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4959547" visible="true" weight="0.15393795" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49514562" visible="true" weight="0.15393795" />
       <window_info anchor="bottom" id="JRebel remote servers log" order="7" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3001618" />
       <window_info id="JRebel" order="2" side_tool="true" />
