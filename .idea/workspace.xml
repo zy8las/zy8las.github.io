@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bbec5b1-4db1-4b64-9550-8088f37e5b90" name="Default" comment="" />
+    <list default="true" id="6bbec5b1-4db1-4b64-9550-8088f37e5b90" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/hexo-theme-yilia" beforeDir="false" afterPath="$PROJECT_DIR$/themes/hexo-theme-yilia" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/next" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next" afterDir="false" />
+    </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -20,14 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="github-hexo搭建个人博客.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/_posts/github-hexo搭建个人博客.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="23">
-                <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -130,19 +131,19 @@
     <property name="settings.editor.selected.configurable" value="settings.gitosc" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\blog\source\images\hexoshare" />
-      <recent name="E:\blog\public\images\hexoshare" />
-      <recent name="E:\blog\source\images\SwitchyOmega" />
-      <recent name="E:\blog\source" />
-      <recent name="E:\blog\public\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\blog\source" />
       <recent name="E:\blog\source\_posts" />
       <recent name="E:\blog\source\images" />
       <recent name="E:\blog\public\2017\10\19\github-hexo搭建个人博客" />
       <recent name="E:\blog\public\2017\10\19\jenkins\image" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\blog\source\images\hexoshare" />
+      <recent name="E:\blog\public\images\hexoshare" />
+      <recent name="E:\blog\source\images\SwitchyOmega" />
+      <recent name="E:\blog\source" />
+      <recent name="E:\blog\public\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -808,12 +809,12 @@
       <workItem from="1524043234750" duration="551000" />
       <workItem from="1524044132778" duration="167000" />
       <workItem from="1524044319825" duration="47000" />
-      <workItem from="1524044386851" duration="1816000" />
+      <workItem from="1524044386851" duration="2650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48440000" />
+    <option name="totallyTimeSpent" value="49274000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -825,7 +826,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5048544" side_tool="true" weight="0.15393795" />
@@ -845,9 +846,9 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297619" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49514562" visible="true" weight="0.15393795" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49514562" visible="true" weight="0.15393795" />
       <window_info anchor="bottom" id="JRebel remote servers log" order="7" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3001618" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3001618" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info anchor="right" id="Theme Preview" order="4" />
@@ -873,6 +874,9 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -995,13 +999,6 @@
     <entry file="file://$PROJECT_DIR$/themes/hexo-theme-yilia/README.md" />
     <entry file="file://$PROJECT_DIR$/public/2018/03/30/hell/index.html" />
     <entry file="file://$PROJECT_DIR$/source/_posts/github分享.md" />
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/hexo-theme-yilia/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1288">
@@ -1029,6 +1026,13 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
         </state>
       </provider>
     </entry>
