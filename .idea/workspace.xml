@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b5267a-d042-4219-81c6-4fd1a1074b19" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/hello.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/python总结.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/python总结.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/python总结.md" afterDir="false" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +24,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="138">
-                <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+                <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -779,12 +778,12 @@
       <option name="presentableId" value="Default" />
       <updated>1524229967542</updated>
       <workItem from="1524229972625" duration="362000" />
-      <workItem from="1524303037446" duration="82000" />
+      <workItem from="1524303037446" duration="311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51507000" />
+    <option name="totallyTimeSpent" value="51736000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -817,9 +816,9 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3293556" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3293556" />
       <window_info anchor="bottom" id="JRebel remote servers log" order="7" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2540453" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2540453" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info anchor="right" id="SciView" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -1036,7 +1035,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="138">
-            <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+            <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           </first_editor>
           <second_editor />
         </state>

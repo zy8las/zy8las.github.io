@@ -1,6 +1,6 @@
 ---
 layout: port
-title: hello
+title: python 总结
 date: 2018-04-20 21:17:28
 tags:
 ---
