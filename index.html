@@ -158,6 +158,364 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cloudera大数据平台搭建" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cloudera大数据平台搭建流程</p>
+<h1 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h1><ul>
+<li>软件环境</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>软件名称</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>操作系统</td>
+<td>centos7 64位</td>
+</tr>
+<tr>
+<td>2</td>
+<td>jdk</td>
+<td>jdk-8u181-linux-x64.tar.gz</td>
+</tr>
+<tr>
+<td>3</td>
+<td>cloudera manager</td>
+<td>cloudera-manager-centos7-cm5.15.1_x86_64.tar.gz</td>
+</tr>
+<tr>
+<td>4</td>
+<td>cdh</td>
+<td>CDH-5.15.1-1.cdh5.15.1.p0.4-el7</td>
+</tr>
+<tr>
+<td>5</td>
+<td>数据库</td>
+<td>mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar</td>
+</tr>
+<tr>
+<td>6</td>
+<td>jdbc</td>
+<td>mysql-connector-java-5.1.43.jar</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>配置规划</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>机器名称</th>
+<th>IP</th>
+<th>配置</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>master</td>
+<td>10.2.47.1</td>
+<td>16C/32G/500G</td>
+<td>master，cm，mysqldb</td>
+</tr>
+<tr>
+<td>2</td>
+<td>slave1</td>
+<td>10.2.47.2</td>
+<td>16C/32G/500G</td>
+<td>slave</td>
+</tr>
+<tr>
+<td>3</td>
+<td>slave2</td>
+<td>10.2.47.3</td>
+<td>16C/32G/500G</td>
+<td>slave</td>
+</tr>
+<tr>
+<td>4</td>
+<td>slave3</td>
+<td>10.2.47.4</td>
+<td>16C/32G/500G</td>
+<td>slave</td>
+</tr>
+<tr>
+<td>5</td>
+<td>slave4</td>
+<td>10.2.47.5</td>
+<td>16C/32G/500G</td>
+<td>slave</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>软件资源</p>
+<ol>
+<li>jdk</li>
+</ol>
+<p>下载地址：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">jdk-8u181-linux-x64.tar.gz</a></p>
+<ol start="2">
+<li>CM</li>
+</ol>
+<p>下载地址：<a href="http://archive-primary.cloudera.com/cm5/cm/5/cloudera-manager-centos7-cm5.15.1_x86_64.tar.gz" target="_blank" rel="noopener">cloudera-manager-centos7-cm5.15.1_x86_64.tar.gz</a></p>
+<ol start="3">
+<li>cdh包</li>
+</ol>
+<p>下载地址：<a href="http://archive.cloudera.com/cdh5/parcels/5.15.1/manifest.json" target="_blank" rel="noopener">manifest.json</a></p>
+<p>下载地址：<a href="http://archive.cloudera.com/cdh5/parcels/5.15.1/CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha1" target="_blank" rel="noopener">CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha1</a></p>
+<p>下载地址：<a href="http://archive.cloudera.com/cdh5/parcels/5.15.1/CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel" target="_blank" rel="noopener">CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel</a></p>
+<ol start="4">
+<li>jdbc连接jar包</li>
+</ol>
+<p>下载地址：<a href="http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar" target="_blank" rel="noopener">mysql-connector-java-5.1.43.jar</a></p>
+</li>
+</ul>
+<h1 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h1><ol>
+<li><p>jdk安装配置</p>
+<ul>
+<li>卸载系统自带jdk</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep java</span><br><span class="line">[root@localhost ~]<span class="comment"># rpm -qa | grep java</span></span><br><span class="line">python-javapackages-3.4.1-5.el7.noarch</span><br><span class="line">java-1.7.0-openjdk-headless-1.7.0.51-2.4.5.5.el7.x86_64</span><br><span class="line">tzdata-java-2014b-1.el7.noarch</span><br><span class="line">javapackages-tools-3.4.1-5.el7.noarch</span><br><span class="line">java-1.7.0-openjdk-1.7.0.51-2.4.5.5.el7.x86_64</span><br><span class="line">删除全部，noarch可不删除</span><br><span class="line">[root@localhost ~]<span class="comment"># rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.51-2.4.5.5.el7.x86_64</span></span><br><span class="line">[root@localhost ~]<span class="comment"># rpm -e --nodeps java-1.7.0-openjdk-1.7.0.51-2.4.5.5.el7.x86_64</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装jdk</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost soft]<span class="comment"># tar -zxvf jdk-8u181-linux-x64.tar.gz </span></span><br><span class="line">[root@localhost soft]<span class="comment"># mv jdk1.8.0_181 jdk</span></span><br><span class="line">配置环境变量</span><br><span class="line">[root@localhost soft]<span class="comment"># vim /etc/profile</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/soft/jdk</span><br><span class="line"><span class="built_in">export</span> PATH=.:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装mysql</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">安装前先卸载mariadb </span><br><span class="line"># rpm -qa | grep mariadb</span><br><span class="line"># rpm -e -nodeps mariadb-libs-5.5.35-3.el7.x86_64</span><br><span class="line">[root@localhost soft]#tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">按common–&gt;libs–&gt;client–&gt;server-&gt;devel的顺序安装：</span><br><span class="line"># rpm -ivh mysql-community-common-5.7.18-1.el7.x86_64.rpm</span><br><span class="line"># rpm -ivh mysql-community-libs-5.7.18-1.el7.x86_64.rpm</span><br><span class="line"># rpm -ivh mysql-community-client-5.7.18-1.el7.x86_64.rpm</span><br><span class="line"># rpm -ivh mysql-community-server-5.7.18-1.el7.x86_64.rpm</span><br><span class="line"># rpm -ivh mysql-community-devel-5.7.18-1.el7.x86_64.rpm </span><br><span class="line"># rpm -ivh  mysql-community-libs-compat-5.7.18-1.el7.x86_64.rpm</span><br><span class="line">启动数据库</span><br><span class="line"># systemctl start mysqld </span><br><span class="line">查看状态： </span><br><span class="line"># systemctl status mysqld</span><br><span class="line">修改mysql初始密码</span><br><span class="line">1、先修改配置文件/etc/my.cnf令MySQL跳过登录时的权限检验，在[mysqld]下加入一行：</span><br><span class="line">skip-grant-tables</span><br><span class="line">2、重启MySQL</span><br><span class="line">#service mysqld restart</span><br><span class="line">3、免密码登录MySQL。</span><br><span class="line">#mysql</span><br><span class="line">4、mysql客户端执行如下命令，修改root密码</span><br><span class="line">mysql&gt;  use mysql;</span><br><span class="line">mysql&gt; UPDATE user SET authentication_string = password(&apos;your-password&apos;) WHERE host = &apos;localhost&apos; AND user = &apos;root&apos;;</span><br><span class="line">mysql&gt; select host,user, authentication_string, password_expired from user; </span><br><span class="line">mysql&gt; update user set password_expired=&apos;N&apos; where password_expired=&apos;Y&apos; //密码不过期</span><br><span class="line">mysql&gt; update user set host=&apos;%&apos; where user=&apos;root&apos; and host=&apos;localhost&apos;; //远程可访问</span><br><span class="line">mysql&gt; flush privileges; //刷新</span><br><span class="line">mysql&gt; exit;//退出</span><br><span class="line">5、修改配置文件/etc/my.cnf删除此前新增那一行skip-grant-tables，并重启MySQL(这一步非常重要，不执行可能导致严重的安全问题)</span><br><span class="line">#service mysqld restart //重启 Mysql</span><br><span class="line">后期会出现 == 初始化数据库错误 ==：</span><br><span class="line">在这个环节，出现的问题较多，但总的来说，是与数据库参数配置，和帐号权限配置有关。</span><br><span class="line">如后面 在执行scm_prepare_database.sh脚本时，出现的错误：</span><br><span class="line"></span><br><span class="line">java.sql.SQLException: Your password does not satisfy the current policy requirements</span><br><span class="line"></span><br><span class="line">一般是由密码策略级别问题引发：</span><br><span class="line">可以通过 my.cnf 配置文件关闭 validate_password 插件。</span><br><span class="line">通过修改/etc/my.cnf 目录下配置文件，修改设置密码策略的级别，只需要在[mysqld]下添加一行 </span><br><span class="line">validate_password = off</span><br><span class="line">编辑完配置文件后，重启mysqld服务即可生效。</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cloudera/mysql.jpg" alt="mysql"></p>
+<ol start="3">
+<li>mysql卸载</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> rpm -qa | grep -i mysql</span><br><span class="line"> [root@localhost local]# rpm -e MySQL-server-5.6.17-1.el6.i686</span><br><span class="line">[root@localhost local]# rpm -e MySQL-client-5.6.17-1.el6.i686</span><br><span class="line">c)删除mysql服务</span><br><span class="line">[root@localhost local]# chkconfig --list | grep -i mysql</span><br><span class="line">[root@localhost local]# chkconfig --del mysql</span><br><span class="line">d)删除分散mysql文件夹</span><br><span class="line">[root@localhost local]# whereis mysql 或者 find / -name mysql</span><br><span class="line">mysql: /usr/lib/mysql /usr/share/mysql</span><br><span class="line">清空相关mysql的所有目录以及文件</span><br><span class="line">rm -rf /usr/lib/mysql</span><br><span class="line">rm -rf /usr/share/mysql</span><br><span class="line">rm -rf /usr/my.cnf</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>源码安装mysql</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">下载mysql源码mysql-5.5.17.tar.gz  http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.22.tar.gz/from/http://cdn.mysql.com/</span><br><span class="line">yum方式安装相关依赖包  yum -y install cmake bison git ncurses-devel gcc gcc-c++</span><br><span class="line">-创建一个用户名为mysql的用户并加入mysql用户组 </span><br><span class="line"># groupadd mysql</span><br><span class="line"># useradd -g mysql mysql</span><br><span class="line">解压mysql-5.6.38.tar.gz，并且创建mysql安装目录和数据库文件存放目录</span><br><span class="line"># tar zxvf mysql-5.6.38.tar.gz </span><br><span class="line"># mkdir /usr/local/mysql</span><br><span class="line"># mkdir /usr/local/mysql/data</span><br><span class="line"># cd mysql-5.6.38/</span><br><span class="line"># cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DMYSQL_DATADIR=/usr/local/mysql/data -DMYSQL_TCP_PORT=3306 -DMYSQL_USER=mysql -DENABLE_DOWNLOADS=1</span><br><span class="line"></span><br><span class="line"> 进入/mysql目录执行</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">修改目录属主权限</span><br><span class="line"># chown -R mysql:mysql /usr/local/mysql/data/</span><br><span class="line"># chown -R mysql:mysql /usr/local/mysql/</span><br><span class="line">创建MySQL Server系统表</span><br><span class="line"># cd /usr/local/mysql/</span><br><span class="line"># scripts/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data</span><br><span class="line"> 配置启动脚本</span><br><span class="line">cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line">添加配置文件vim /etc/my.cnf</span><br><span class="line">[mysql]</span><br><span class="line"># 设置mysql客户端默认字符集</span><br><span class="line">default-character-set=utf8 </span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">[mysqld]</span><br><span class="line">skip-name-resolve</span><br><span class="line">#设置3306端口</span><br><span class="line">port = 3306 </span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line"># 设置mysql的安装目录</span><br><span class="line">basedir=/usr/local/mysql</span><br><span class="line"># 设置mysql数据库的数据的存放目录</span><br><span class="line">datadir=/usr/local/mysql/data</span><br><span class="line"># 允许最大连接数</span><br><span class="line">max_connections=200</span><br><span class="line"># 服务端使用的字符集默认为8比特编码的latin1字符集</span><br><span class="line">character-set-server=utf8</span><br><span class="line"># 创建新表时将使用的默认存储引擎</span><br><span class="line">default-storage-engine=INNODB </span><br><span class="line">lower_case_table_names=1</span><br><span class="line">max_allowed_packet=16M</span><br><span class="line"></span><br><span class="line">#忘记密码时可取消注释，无密码登陆</span><br><span class="line">#skip-grant-tables</span><br><span class="line">添加环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line">export MYSQL_HOME=/usr/local/mysql</span><br><span class="line">export PATH=.:$MYSQL_HOME/bin:$PATH</span><br><span class="line">source /etc/profile</span><br><span class="line">设置开机启动：</span><br><span class="line">chkconfig mysqld on</span><br><span class="line">启动服务：</span><br><span class="line">service mysqld start</span><br><span class="line">设置初始密码</span><br><span class="line">1、使用空的初始密码登录mysql账号：</span><br><span class="line">mysql-uroot -p</span><br><span class="line"> </span><br><span class="line">2、修改root密码：</span><br><span class="line">mysql&gt; update user set Password=password(&quot;123456&quot;) where User=&apos;root&apos;;</span><br><span class="line">Query OK, 4 rows affected (0.01 sec)</span><br><span class="line">Rows matched: 4  Changed: 4  Warnings: 0</span><br><span class="line"> </span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line"> </span><br><span class="line">mysql&gt; select Host,User,password from user where user=&apos;root&apos;;</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">| Host                  | User | password                                  |</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">| localhost             | root | *5626ED34B75C6C508BA2A3D0A4F6E4C58823138C |</span><br><span class="line">| localhost.localdomain | root | *5626ED34B75C6C508BA2A3D0A4F6E4C58823138C |</span><br><span class="line">| 127.0.0.1             | root | *5626ED34B75C6C508BA2A3D0A4F6E4C58823138C |</span><br><span class="line">| ::1                   | root | *5626ED34B75C6C508BA2A3D0A4F6E4C58823138C |</span><br><span class="line">+-----------------------+------+-------------------------------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改机器名称</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">方法1：hostnamectl <span class="built_in">set</span>-hostname master</span><br><span class="line">方法2：vi /etc/hostname </span><br><span class="line">master                </span><br><span class="line">:wq</span><br><span class="line">[root@bogon ~]<span class="comment"># reboot</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>配置hosts</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/hosts</span><br><span class="line">10.2.47.1 master</span><br><span class="line">10.2.47.2 slave1</span><br><span class="line">10.2.47.3 slave2</span><br><span class="line">10.2.47.4 slave3</span><br><span class="line">10.2.47.5 slave4</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>设置防火墙（所有节点）</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd  --state（查询防火墙状态） </span></span><br><span class="line"><span class="comment">#systemctl stop firewalld.service （关闭防火墙） </span></span><br><span class="line"><span class="comment">#systemctl start firewalld.service （开启防火墙）</span></span><br><span class="line"><span class="comment">#systemctl disable firewalld.service （禁止firewall开机启动）</span></span><br><span class="line">//禁止开机启动</span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br><span class="line">Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.</span><br><span class="line">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.</span><br><span class="line"></span><br><span class="line">设置防火墙策略，在所有节点执行下面脚本（执行前要启动防火墙）(可省略)</span><br><span class="line">//集群机器间可以相互访问</span><br><span class="line">firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family='ipv4' source address='10.2.47.1' port protocol='tcp' port='0-65535' accept"</span></span><br><span class="line">firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family='ipv4' source address='10.2.47.2' port protocol='tcp' port='0-65535' accept"</span></span><br><span class="line">firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family='ipv4' source address='10.2.47.3' port protocol='tcp' port='0-65535' accept"</span></span><br><span class="line">firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family='ipv4' source address='10.2.47.4' port protocol='tcp' port='0-65535' accept"</span></span><br><span class="line">firewall-cmd --permanent --add-rich-rule=<span class="string">"rule family='ipv4' source address='10.2.47.5' port protocol='tcp' port='0-65535' accept"</span> </span><br><span class="line">//设置可以访问的端口</span><br><span class="line">firewall-cmd --permanent --add-port=0-65535/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>配置ssh免密登录</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd~ //进入到 根目录</span></span><br><span class="line"><span class="comment"># ssh-keygen -t rsa</span></span><br><span class="line"> 一路回车，生成无密码的密钥对。</span><br><span class="line"><span class="comment"># cp id_rsa.pub authorized_key</span></span><br><span class="line"><span class="comment"># ssh-copy-id -i slave1</span></span><br><span class="line"><span class="comment"># ssh-copy-id -i slave2</span></span><br><span class="line"><span class="comment"># ssh-copy-id -i slave3</span></span><br><span class="line"><span class="comment"># ssh-copy-id -i slave4</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>关闭selinux（所有节点）</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">关闭linux SELINUX安全内核</span><br><span class="line"><span class="comment"># setenforce 0 （临时生效）</span></span><br><span class="line">修改 /etc/selinux/config 下的 SELINUX=disabled （重启后永久生效）</span><br><span class="line"><span class="comment"># vi /etc/selinux/config</span></span><br><span class="line">内容增加：</span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="comment"># reboot</span></span><br><span class="line">查看SELINUX 是否关闭：</span><br><span class="line"><span class="comment">#sestatus</span></span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>修改内核参数(所有节点)</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">1.设置swappiness，控制运行时内存的相对权重，Cloudera 建议将 swappiness 设置为 10：</span><br><span class="line">//查看swappiness</span><br><span class="line"><span class="comment"># cat /proc/sys/vm/swappiness</span></span><br><span class="line">//永久性修改，执行下面两条命令</span><br><span class="line"><span class="comment"># sysctl -w vm.swappiness=10</span></span><br><span class="line"><span class="comment"># echo vm.swappiness = 10 &gt;&gt; /etc/sysctl.conf </span></span><br><span class="line"></span><br><span class="line">2.关闭透明大页面：</span><br><span class="line">自CentOS6版本开始引入了Transparent Huge Pages(THP)，从CentOS7版本开始，该特性默认就会启用。尽管THP的本意是为提升内存的性能，不过某些数据库厂商还是建议直接关闭THP，否则可能会导致性能出现下降。</span><br><span class="line">首先查看透明大页是否启用，[always] never表示已启用，always [never]表示已禁用：</span><br><span class="line"><span class="comment"># cat /sys/kernel/mm/transparent_hugepage/defrag</span></span><br><span class="line">[always] madvise never</span><br><span class="line"><span class="comment"># cat /sys/kernel/mm/transparent_hugepage/enabled</span></span><br><span class="line">[always] madvise never</span><br><span class="line">以上状态就说明是启用的。</span><br><span class="line">临时关闭（重启机器会变回默认开启状态）：</span><br><span class="line"><span class="comment"># echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</span></span><br><span class="line"><span class="comment">#echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span></span><br><span class="line">永久关闭：</span><br><span class="line">//编辑/etc/rc.d/rc.local</span><br><span class="line"><span class="comment"># vi /etc/rc.d/rc.local</span></span><br><span class="line">//在文件后添加下面内容:</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -f /sys/kernel/mm/transparent_hugepage/enabled; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -f /sys/kernel/mm/transparent_hugepage/defrag; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/defrag</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">保存退出，然后赋予rc.local文件执行权限：</span><br><span class="line"><span class="comment">#chmod +x /etc/rc.d/rc.local</span></span><br><span class="line"></span><br><span class="line">3.修改文件句柄数：</span><br><span class="line">修改系统文件句柄数限制：</span><br><span class="line">//查看文件句柄数，显示1024，显然太小</span><br><span class="line"><span class="comment"># ulimit -n </span></span><br><span class="line">1024</span><br><span class="line">//修改限制</span><br><span class="line"><span class="comment">#vi /etc/security/limits.conf </span></span><br><span class="line">//在文件后加入下面内容：</span><br><span class="line"></span><br><span class="line">* soft nofile 100000</span><br><span class="line">* hard nofile 100000</span><br><span class="line">修改后需要重启机器。</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>其他安装与配置</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum  -y  install psmisc MySQL-python at bc bind-libs bind-utils cups-client cups-libs cyrus-sasl-gssapi cyrus-sasl-plain ed fuse fuse-libs httpd httpd-tools keyutils-libs-devel krb5-devel libcom_err-devel libselinux-devel libsepol-devel libverto-devel mailcap noarch mailx mod_ssl openssl-devel pcre-devel postgresql-libs python-psycopg2 redhat-lsb-core redhat-lsb-submod-security  x86_64 spax time zlib-devel</span></span><br><span class="line"><span class="comment">#yum install -y python-lxml</span></span><br><span class="line"><span class="comment">#yum install krb5-devel cyrus-sasl-gssapi cyrus-sasl-deve libxml2-devel libxslt-devel mysql mysql-devel openldap-devel python-devel python-simplejson sqlite-devel</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># chmod +x /etc/rc.d/rc.local</span></span><br><span class="line"><span class="comment"># yum -y install rpcbind</span></span><br><span class="line"><span class="comment"># systemctl start rpcbind</span></span><br><span class="line"><span class="comment"># echo "systemctl start rpcbind" &gt;&gt; /etc/rc.d/rc.local</span></span><br><span class="line"></span><br><span class="line">可能出现问题如下：</span><br><span class="line">Loaded plugins: fastestmirror, langpacks</span><br><span class="line">Repository base is listed more than once <span class="keyword">in</span> the configuration</span><br><span class="line">Repository updates is listed more than once <span class="keyword">in</span> the configuration</span><br><span class="line">Repository extras is listed more than once <span class="keyword">in</span> the configuration</span><br><span class="line">Repository centosplus is listed more than once <span class="keyword">in</span> the configuration</span><br><span class="line">证明源有问题，只需把源更新成mirror.gree.com即可</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>配置NTF服务</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">集群中所有主机必须保持时间同步，如果时间相差较大会引起各种问题。 具体建设过程如下：所有节点安装相关组件：</span><br><span class="line"><span class="comment"># yum install  ntp  ntpdate  -y</span></span><br><span class="line">NTP服务端（主节点）：</span><br><span class="line">1. 查找时间同步服务器http://www.pool.ntp.org/zone/asia：</span><br><span class="line">打开网址，内容如下：</span><br><span class="line">2. 编辑 /etc/ntp.conf：</span><br><span class="line"><span class="comment"># vi /etc/ntp.conf</span></span><br><span class="line">//在文件中输入上面网页内容：</span><br><span class="line">server 10.2.8.44 </span><br><span class="line">server 10.2.47.1</span><br><span class="line"></span><br><span class="line">server 0.asia.pool.ntp.org</span><br><span class="line">server 1.asia.pool.ntp.org</span><br><span class="line">server 2.asia.pool.ntp.org</span><br><span class="line">server 3.asia.pool.ntp.org</span><br><span class="line">3.启动ntp服务</span><br><span class="line"><span class="comment"># systemctl start  ntpd</span></span><br><span class="line">4. 配置开机启动：</span><br><span class="line"><span class="comment"># systemctl enable  ntpd.service  </span></span><br><span class="line"></span><br><span class="line">注意：如果ntpd 开机启动失效，有可能是因为安装了chronyd 并且是开机自启状态，所以导致ntpd开机自启失败。</span><br><span class="line"><span class="comment"># 查看  chronyd设置状态</span></span><br><span class="line"><span class="comment"># systemctl status chronyd</span></span><br><span class="line">表示没问题</span><br><span class="line">● chronyd.service - NTP client/server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/chronyd.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: failed (Result: signal) since Sat 2018-10-13 11:00:50 CST; 43s ago</span><br><span class="line"> Main PID: 1163 (code=killed, signal=KILL)</span><br><span class="line"></span><br><span class="line">Oct 13 10:30:33 master chronyd[1163]: Linux kernel major=3 minor=10 patch=0</span><br><span class="line">Oct 13 10:30:33 master chronyd[1163]: hz=100 shift_hz=7 freq_scale=1.00000000 nomin...l=2</span><br><span class="line">Oct 13 10:31:33 master systemd[1]: Started NTP client/server.</span><br><span class="line">以面表明，chronyd显示为开机关闭状态。</span><br><span class="line"></span><br><span class="line">将chronyd设为禁用状态：</span><br><span class="line"><span class="comment"># systemctl disable chronyd.service</span></span><br><span class="line">此时，NTP的服务开机自启动完成！ </span><br><span class="line">5. 检查是否设置成功：</span><br><span class="line"><span class="comment"># ntpq  -p</span></span><br><span class="line">//更新时间</span><br><span class="line">[root@master ~]<span class="comment"># ntpq -p</span></span><br><span class="line">     remote           refid      st t when poll reach   delay   offset  jitter</span><br><span class="line">==============================================================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*10.2.8.44       10.4.20.100      4 u  113  256  377    1.136    3.295   1.089</span><br><span class="line"> master          .INIT.          16 u    - 1024    0    0.000    0.000   0.000</span><br><span class="line"></span><br><span class="line"><span class="comment">#timedatectl </span></span><br><span class="line"></span><br><span class="line">[root@master ~]<span class="comment"># timedatectl </span></span><br><span class="line">      Local time: Sat 2018-10-13 14:00:35 CST</span><br><span class="line">  Universal time: Sat 2018-10-13 06:00:35 UTC</span><br><span class="line">        RTC time: Sat 2018-10-13 06:00:35</span><br><span class="line">       Time zone: Asia/Shanghai (CST, +0800)</span><br><span class="line">     NTP enabled: no</span><br><span class="line">NTP synchronized: yes</span><br><span class="line"> RTC <span class="keyword">in</span> <span class="built_in">local</span> TZ: no</span><br><span class="line">      DST active: n/a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">NTP客户端（所有从节点）：</span><br><span class="line">6. 远程客户端时间同步测试</span><br><span class="line"><span class="comment"># date</span></span><br><span class="line"><span class="comment"># ntpdate 10.2.47.1</span></span><br><span class="line">10.2.47.1是NTP服务端IP，显示如下信息，测试成功：</span><br><span class="line">[root@slave1 ~]<span class="comment"># date</span></span><br><span class="line">Sat Oct 13 14:00:50 CST 2018</span><br><span class="line">[root@slave1 ~]<span class="comment"># ntpdate 10.2.47.1</span></span><br><span class="line">13 Oct 14:01:08 ntpdate[5973]: adjust time server 10.2.47.1 offset -0.192486 sec</span><br><span class="line"></span><br><span class="line">7. 客户端设置计划任务，每30分钟同步时间</span><br><span class="line"><span class="comment">#crontab -e </span></span><br><span class="line">//加入内容：</span><br><span class="line">0-59/30 * * * * /usr/sbin/ntpdate 10.2.47.1 &amp;&amp; /sbin/hwclock -w</span><br><span class="line">8. 设置定时任务开机启动</span><br><span class="line">//设置开机启动</span><br><span class="line"><span class="comment"># systemctl enable crond.service</span></span><br><span class="line"></span><br><span class="line">//查看状态</span><br><span class="line"><span class="comment"># systemctl status crond</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/cloudera/ntp.jpg" alt="ntp"></p>
+</li>
+</ol>
+<h1 id="安装CM"><a href="#安装CM" class="headerlink" title="安装CM"></a>安装CM</h1><ol>
+<li>传包、解压</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在主节点上下载相关软件包，这里将软件包下载到/soft目录下。</span><br><span class="line">将CM解压到/opt/目录</span><br><span class="line">[root@master soft]<span class="comment"># tar -zxvf cloudera-manager-centos7-cm5.15.1_x86_64.tar.gz  -C /opt/</span></span><br><span class="line"><span class="comment">#ls /opt/</span></span><br><span class="line">[root@master opt]<span class="comment"># ls</span></span><br><span class="line">cloudera  cm-5.15.1  rh</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建数据库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">在主节点上：</span><br><span class="line"># mysql -h127.0.0.1 -uroot -p   //加参数-h127.0.0.1 指定本机方式，否则可能不允许执行grant</span><br><span class="line">Enter password:          \\输入数据库密码</span><br><span class="line">//在MariaDB [(none)]&gt;命令状态输入下面脚本：</span><br><span class="line">create database hive DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br><span class="line">create database amon DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br><span class="line">create database hue DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br><span class="line">create database monitor DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br><span class="line">create database oozie DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br><span class="line">grant all privileges on *.* to root@localhost identified by &apos;root&apos; with grant option;</span><br><span class="line">grant all on *.* to root@&quot;%&quot; Identified by &quot;root&quot;;</span><br><span class="line">flush privileges;</span><br><span class="line">exit;</span><br><span class="line">//复制Mysql JDBC包到/opt/cm-5.15.1/share/cmf/lib/目录</span><br><span class="line">[root@master soft]# cp mysql-connector-java-5.1.43.jar /opt/cm-5.15.1/share/cmf/lib/</span><br><span class="line"></span><br><span class="line">[root@master soft]# /opt/cm-5.15.1/share/cmf/schema/scm_prepare_database.sh  mysql cm -h10.2.47.1 -uroot -pa464999578 --scm-host 10.2.47.1 scm scm scm</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>创建用户</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在所有节点上执行：</span><br><span class="line">[root@master ~]<span class="comment"># useradd --system --home=/opt/cm-5.15.1/run/cloudera-scm-server/  --no-create-home --shell=/bin/false --comment "Cloudera SCM User" cloudera-scm</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>制作本地yum源</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">在主节点上：</span><br><span class="line">//进入软件包目录</span><br><span class="line">[root@master ~]<span class="comment"># cd /soft/</span></span><br><span class="line">//拷贝三个文件到/opt/cloudera/parcel-repo/目录</span><br><span class="line">[root@master soft]<span class="comment"># cp CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha1 manifest.json /opt/cloudera/parcel-repo/</span></span><br><span class="line">//进入/opt/cloudera/parcel-repo/目录</span><br><span class="line"><span class="comment">#cd /opt/cloudera/parcel-repo/</span></span><br><span class="line">//修改文件名</span><br><span class="line">[root@master parcel-repo]<span class="comment"># mv CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha1 CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha</span></span><br><span class="line">此时/opt/cloudera/parcel-repo/目录下文件：</span><br><span class="line">[root@master parcel-repo]<span class="comment"># ls</span></span><br><span class="line">CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel      manifest.json</span><br><span class="line">CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>拷贝jar包</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在所有节点上：</span><br><span class="line">//如果没有/usr/share/java/目录，则创建</span><br><span class="line"><span class="comment"># cp mysql-connector-java-5.1.43-bin.jar /usr/share/java/mysql-connector-java.jar</span></span><br><span class="line">在主节点上：</span><br><span class="line">//将mysql JDBC jar 包拷贝到  /opt/cm-5.15.1/share/cmf/lib/ 目录</span><br><span class="line">[root@master soft]<span class="comment"># cp mysql-connector-java-5.1.43.jar /opt/cm-5.15.1/share/cmf/lib/</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>修改cloudera-scm-agent配置</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在主节点上，修改/opt/cm-5.15.1/etc/cloudera-scm-agent/config.ini文件：</span><br><span class="line">//将config.ini server_host=localhost 内容改为server_host=10.2.47.1</span><br><span class="line"><span class="comment"># sed -i "s/server_host=localhost/server_host=10.2.47.1/" /opt/cm-5.13.1/etc/cloudera-scm-agent/config.ini</span></span><br><span class="line">在主节点上：</span><br><span class="line">//将cm-5.15.1 打包，并复制到其他节点</span><br><span class="line"><span class="comment">#cd /opt </span></span><br><span class="line"><span class="comment">#tar czf cm-5.15.1.tar.gz  cm-5.15.1/</span></span><br><span class="line">//复制到其他节点</span><br><span class="line">[root@master opt]<span class="comment"># scp cm-5.15.1.tar.gz root@slave1:/opt/</span></span><br><span class="line">[root@master opt]<span class="comment"># scp cm-5.15.1.tar.gz root@slave2:/opt/</span></span><br><span class="line">[root@master opt]<span class="comment"># scp cm-5.15.1.tar.gz root@slave3:/opt/</span></span><br><span class="line">[root@master opt]<span class="comment"># scp cm-5.15.1.tar.gz root@slave4:/opt/</span></span><br><span class="line"></span><br><span class="line"> 在所有从节点上解压：</span><br><span class="line">//将cm-5.15.1 包解压</span><br><span class="line"><span class="comment">#cd opt </span></span><br><span class="line"><span class="comment">#tar -xzvf cm-5.15.1.tar.gz </span></span><br><span class="line">//解压后删除</span><br><span class="line"><span class="comment">#rm -rf cm-5.15.1.tar.gz</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>启动CM Server和Agent</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在主节点上，启动cloudera-scm-server：</span><br><span class="line">[root@master opt]<span class="comment"># /opt/cm-5.15.1/etc/init.d/cloudera-scm-server start</span></span><br><span class="line">启动过程较慢，可通过/opt/cm-5.15.1/<span class="built_in">log</span>/cloudera-scm-server日志，查看启动过程。</span><br><span class="line">在所有节点上，启动cloudera-scm-agent：</span><br><span class="line">[root@master opt]<span class="comment"># /opt/cm-5.15.1/etc/init.d/cloudera-scm-agent start</span></span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>访问CM</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">地址：http://master:7180    http://10.2.47.1:7180</span><br><span class="line">账号：admin</span><br><span class="line">密码：admin</span><br><span class="line">显示如下：</span><br></pre></td></tr></table></figure>
+<p><img src="" alt="cloudera manager"></p>
+<h1 id="安装CDH"><a href="#安装CDH" class="headerlink" title="安装CDH"></a>安装CDH</h1><ol>
+<li>登录后界面接受协议：</li>
+</ol>
+<p><img src="/images/cloudera/cmhello.jpg" alt="hello CM"></p>
+<ol start="2">
+<li>选择CM版本，本文选择Cloudera Express免费版。</li>
+</ol>
+<p><img src="/images/cloudera/version.jpg" alt="version"></p>
+<ol start="3">
+<li>指定主机</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在搜索主机名和IP地址框输入slave[1-4]，这里输入的内容支持正则表达式。输入后点【搜索】按钮，出现机器列表：</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cloudera/address.jpg" alt="address"></p>
+<p>选择“当前管理的主机“选择项卡，点【继续】</p>
+<p><img src="/images/cloudera/address.jpg" alt="nodes"></p>
+<ol start="4">
+<li>选择CDH版本</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里需要选择制作本地源时的版本，如果选择别的版本的就会去官网下载，那样安装速度会很慢。</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cloudera/version1.jpg" alt="source version"></p>
+<p>点【继续】按钮，进入安装界面</p>
+<ol start="3">
+<li>检查主机</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在搜索主机名和IP地址框输入slave[1-4]，这里输入的内容支持正则表达式。输入后点【搜索】按钮，出现机器列表,点击继续</span><br></pre></td></tr></table></figure>
+<ul>
+<li>出现cdh5.15.1新版无法显示，此时我们需要做httpd服务</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">安装http和启动http服务</span><br><span class="line"><span class="comment">#rpm -qa |grep httpd</span></span><br><span class="line"><span class="comment">#yum install -y httpd</span></span><br><span class="line"><span class="comment">#chkconfig httpd on</span></span><br><span class="line"><span class="comment">#service httpd start</span></span><br><span class="line">创建parcels文件夹</span><br><span class="line"><span class="comment">#mkdir /var/www/html/parcels</span></span><br><span class="line"><span class="comment">#cd /var/www/html/parcels</span></span><br><span class="line"><span class="comment"># cp CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha manifest.json  /var/www/html/parcels</span></span><br><span class="line">在网页中输入 http://10.2.47.1/parcels</span><br></pre></td></tr></table></figure>
+<ul>
+<li>出现找不到存储包,解决如下:</li>
+</ul>
+<p><img src="/images/cloudera/save.jpg" alt="save"></p>
+<p>  点击使用parcel 更多选项更改远程parcel存储库URL<code>http://10.2.47.1/parcels/</code></p>
+<p>安装</p>
+<p><img src="/images/cloudera/clouderainstall.jpg" alt=""></p>
+<ul>
+<li>出现“主机运行状态不良”错误</li>
+</ul>
+<p><img src="/images/cloudera/buliang.jpg" alt="buliang"></p>
+<p>解决方案如下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">遇到节点“主机运行状态不良”的提示，解决办法是删除故障节点Agent服务cm_guid文件：</span><br><span class="line"><span class="comment">#rm -rf /opt/cm-5.13.1/lib/cloudera-scm-agent/cm_guid</span></span><br><span class="line">重新启动故障节点Agent服务：</span><br><span class="line"><span class="comment">#/opt/cm-5.13.1/etc/init.d/cloudera-scm-agent restart</span></span><br><span class="line">重启故障节点Agent服务后，故障消失：</span><br><span class="line">注：出现故障原因是，因为我之前在故障节点启动过cloudera-scm-agent服务。</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>检查主机，全部通过</li>
+</ol>
+<p><img src="/images/cloudera/check.jpg" alt="check"></p>
+<ol start="6">
+<li>选择安装的服务，全部安装</li>
+</ol>
+<p><img src="/images/cloudera/all.jpg" alt="install"></p>
+<ol start="7">
+<li>角色分配</li>
+</ol>
+<p><img src="/images/cloudera/分配1.jpg" alt="fenpei"></p>
+<p><img src="/images/cloudera/分配2.jpg" alt="fenpei2"></p>
+<p><img src="/images/cloudera/分配3.jpg" alt="fenpei3"></p>
+<ol start="8">
+<li>数据库设置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">指定的数据库名称，与原来创建的数据库（hive,monitor,oozie,hue）保持一致，并输入对应的数据库用户名和密码，为了简便这里用的是root账号名和密码。</span><br><span class="line">测试连接，Hue 测试报错：Unable to verify database connection：</span><br><span class="line">原因是缺少Mysql mysql-community-libs-compat 安装包，安装后，问题解决：</span><br><span class="line">//进入安装包所在目标</span><br><span class="line"># cd /data/mysql/ </span><br><span class="line"># rpm -ivh  mysql-community-libs-compat-5.7.18-1.el7.x86_64.rpm</span><br><span class="line">测试成功，继续</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cloudera/test.jpg" alt=""></p>
+<ol start="9">
+<li>集群设置，默认配置，直接点击继续</li>
+</ol>
+<p><img src="/images/cloudera/1.jpg" alt=""></p>
+<p><img src="/images/cloudera/2.jpg" alt="2"></p>
+<p><img src="/images/cloudera/3.jpg" alt="3"></p>
+<p><img src="/images/cloudera/4.jpg" alt="4"></p>
+<p><img src="/images/cloudera/5.jpg" alt="5"></p>
+<ol start="10">
+<li>开始安装</li>
+</ol>
+<ul>
+<li>安装spark显示找不到JAVA_HOME,解决方案如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#mkdir -p /usr/java</span><br><span class="line">#ln -s /soft/jdk /usr/java/default</span><br><span class="line">刷新问题解决。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>出现hive数据库驱动找不到,解决方案如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为缺少mysql驱动</span><br><span class="line">[root@master soft]# cp /soft/mysql-connector-java-5.1.43.jar /opt/cloudera/parcels/CDH-5.15.1-1.cdh5.15.1.p0.4/lib/hive/lib/</span><br><span class="line">问题解决。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>出现oozie数据库驱动找不到,解决方案如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为缺少mysql驱动</span><br><span class="line">[root@master soft]# cp /soft/mysql-connector-java-5.1.43.jar /opt/cloudera/parcels/CDH-5.15.1-1.cdh5.15.1.p0.4/lib/oozie/lib/</span><br><span class="line">[root@master soft]# cp /soft/mysql-connector-java-5.1.43.jar /opt/cloudera/parcels/CDH-5.15.1-1.cdh5.15.1.p0.4/lib/oozie/libext/</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>安装完成</li>
+</ol>
+<p><img src="/images/cloudera/finally.jpg" alt="finally"></p>
+<p>第一次安装完成后，会出现一些配置的警告信息。这些可以根据提示信息更改。</p>
+<ul>
+<li>警告处理</li>
+</ul>
+<p>发现节点有异常信息，显示所有主机，发现节点运行状态不良，按照 主机-&gt;所有主机-&gt;进入节点查看：</p>
+<p><img src="/images/cloudera/ntperr.jpg" alt="ntperr"></p>
+<p>选择“配置“页签，拉到页面底部，修改”主机时钟偏差阈值“，设为”从不“，点【保存更改】，异常消失。</p>
+<p><img src="/images/cloudera/ntpconf.jpg" alt=""></p>
+<p><img src="/images/cloudera/更改1.jpg" alt="ntp"></p>
+<ul>
+<li>未能连接到 Host Monitor</li>
+</ul>
+<p><img src="/images/cloudera/hostno.jpg" alt="hostno"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">解决方案：</span><br><span class="line">后台tail -f /opt/cm-5.15.1/log/cloudera-scm-server/cloudera-scm-server.log 日志报错信息：</span><br><span class="line">com.cloudera.cmon.MgmtServiceLocatorException: Could not find a HOST_MONITORING nozzle from SCM.</span><br><span class="line">此问题原因：有些网上说是由文件句柄数限制引起，所以按照网上说明进行了修改：</span><br><span class="line">在主节点上，修改/opt/cm-5.15.1/etc/cloudera-scm-agent/config.ini文件：</span><br><span class="line">//查看文件句柄数，显示1024，显然太小</span><br><span class="line"># ulimit -n </span><br><span class="line">1024</span><br><span class="line">//修改限制</span><br><span class="line">#vi /etc/security/limits.conf </span><br><span class="line">//在文件后加入下面内容：</span><br><span class="line">* soft nofile 100000</span><br><span class="line">* hard nofile 100000</span><br><span class="line">此步骤需要重启机器生效，可以设置完后再重启。</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/01/cloudera大数据平台搭建/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-win10安装ubuntu" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
