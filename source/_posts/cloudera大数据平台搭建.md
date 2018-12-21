@@ -124,7 +124,7 @@ cloudera大数据平台搭建流程
    
    ```
 
-   ![mysql](C:\Users\330956\Desktop\md\mysql.jpg)
+   ![mysql](/images/cloudera/mysql.jpg)
 
    3. mysql卸载
 
@@ -463,7 +463,7 @@ cloudera大数据平台搭建流程
    
    ```
 
-   ![ntp](C:\Users\330956\Desktop\md\ntp.jpg)
+   ![ntp](/images/cloudera/ntp.jpg)
 
 # 安装CM
 
@@ -591,11 +591,11 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 
 1. 登录后界面接受协议：
 
-![hello CM](C:\Users\330956\Desktop\md\cmhello.jpg)
+![hello CM](/images/cloudera/cmhello.jpg)
 
 2. 选择CM版本，本文选择Cloudera Express免费版。
 
-![version](C:\Users\330956\Desktop\md\version.jpg)
+![version](/images/cloudera/version.jpg)
 
 3. 指定主机
 
@@ -603,11 +603,11 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 在搜索主机名和IP地址框输入slave[1-4]，这里输入的内容支持正则表达式。输入后点【搜索】按钮，出现机器列表：
 ```
 
-![address](C:\Users\330956\Desktop\md\address.jpg)
+![address](/images/cloudera/address.jpg)
 
 选择“当前管理的主机“选择项卡，点【继续】
 
-![nodes](C:\Users\330956\Desktop\md\address.jpg)
+![nodes](/images/cloudera/address.jpg)
 
 4. 选择CDH版本
 
@@ -615,7 +615,7 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 这里需要选择制作本地源时的版本，如果选择别的版本的就会去官网下载，那样安装速度会很慢。
 ```
 
-![source version](C:\Users\330956\Desktop\md\version1.jpg)
+![source version](/images/cloudera/version1.jpg)
 
 点【继续】按钮，进入安装界面
 
@@ -643,17 +643,17 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 
 * 出现找不到存储包,解决如下:
 
-![save](C:\Users\330956\Desktop\md\save.jpg)
+![save](/images/cloudera/save.jpg)
 
   点击使用parcel 更多选项更改远程parcel存储库URL`http://10.2.47.1/parcels/`
 
 安装
 
-![](C:\Users\330956\Desktop\md\clouderainstall.jpg)
+![](/images/cloudera/clouderainstall.jpg)
 
 * 出现“主机运行状态不良”错误
 
-![buliang](C:\Users\330956\Desktop\md\buliang.jpg)
+![buliang](/images/cloudera/buliang.jpg)
 
 解决方案如下
 
@@ -670,21 +670,21 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 
 5. 检查主机，全部通过
 
-![check](C:\Users\330956\Desktop\md\check.jpg)
+![check](/images/cloudera/check.jpg)
 
 6. 选择安装的服务，全部安装
 
-![install](C:\Users\330956\Desktop\md\all.jpg)
+![install](/images/cloudera/all.jpg)
 
 
 
 7. 角色分配
 
-![fenpei](C:\Users\330956\Desktop\md\分配1.jpg)
+![fenpei](/images/cloudera/分配1.jpg)
 
-![fenpei2](C:\Users\330956\Desktop\md\分配2.jpg)
+![fenpei2](/images/cloudera/分配2.jpg)
 
-![fenpei3](C:\Users\330956\Desktop\md\分配3.jpg)
+![fenpei3](/images/cloudera/分配3.jpg)
 
 8. 数据库设置
 
@@ -699,19 +699,19 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 
 ```
 
-![](C:\Users\330956\Desktop\md\test.jpg)
+![](/images/cloudera/test.jpg)
 
 9. 集群设置，默认配置，直接点击继续
 
-![](C:\Users\330956\Desktop\md\1.jpg)
+![](/images/cloudera/1.jpg)
 
-![2](C:\Users\330956\Desktop\md\2.jpg)
+![2](/images/cloudera/2.jpg)
 
-![3](C:\Users\330956\Desktop\md\3.jpg)
+![3](/images/cloudera/3.jpg)
 
-![4](C:\Users\330956\Desktop\md\4.jpg)
+![4](/images/cloudera/4.jpg)
 
-![5](C:\Users\330956\Desktop\md\5.jpg)
+![5](/images/cloudera/5.jpg)
 
 10. 开始安装
 
@@ -742,7 +742,7 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 
 11. 安装完成
 
-![finally](C:\Users\330956\Desktop\md\finally.jpg)
+![finally](/images/cloudera/finally.jpg)
 
 第一次安装完成后，会出现一些配置的警告信息。这些可以根据提示信息更改。
 
@@ -750,17 +750,17 @@ CDH-5.15.1-1.cdh5.15.1.p0.4-el7.parcel.sha
 
 发现节点有异常信息，显示所有主机，发现节点运行状态不良，按照 主机->所有主机->进入节点查看：
 
-![ntperr](C:\Users\330956\Desktop\md\ntperr.jpg)
+![ntperr](/images/cloudera/ntperr.jpg)
 
 选择“配置“页签，拉到页面底部，修改”主机时钟偏差阈值“，设为”从不“，点【保存更改】，异常消失。
 
-![](C:\Users\330956\Desktop\md\ntpconf.jpg)
+![](/images/cloudera/ntpconf.jpg)
 
-![ntp](C:\Users\330956\Desktop\md\更改1.jpg)
+![ntp](/images/cloudera/更改1.jpg)
 
 * 未能连接到 Host Monitor
 
-![hostno](C:\Users\330956\Desktop\md\hostno.jpg)
+![hostno](/images/cloudera/hostno.jpg)
 
 ```
 解决方案：
