@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | zy8las</title>
+  <title>zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="人生没有失败，只是暂时停止成功">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zy8las">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="zy8las">
 <meta property="og:description" content="人生没有失败，只是暂时停止成功">
 <meta property="og:locale" content="zh-Hans">
@@ -158,278 +158,136 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-github-hexo搭建个人博客" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/github-hexo搭建个人博客/">使用github+hexo搭建个人免费博客</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/github-hexo搭建个人博客/" class="archive-article-date">
+  	<time datetime="2017-10-19T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>使用github pages服务器搭建博客的好处有：<br>1、全是静态文件，访问速度快；<br>2、免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；<br>3、可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；<br>4、数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；<br>5、博客内容可以轻松打包、转移、发布到其它平台；</p>
+<h1 id="二、准备工作"><a href="#二、准备工作" class="headerlink" title="二、准备工作"></a>二、准备工作</h1><p>1、有一个github账号，没有的话去注册一个，<a href="https://github.com/" target="_blank" rel="noopener">官网</a>；<br>2、安装了node.js、npm，并了解相关基础知识；<br>3、安装了git for windows（或者其它git客户端）<br>4、本文所使用的环境：</p>
+<ul>
+<li>Windows7 x64</li>
+<li>node-v6.11.4-x64</li>
+<li><a href="mailto:git@1.9.2" target="_blank" rel="noopener">git@1.9.2</a></li>
+<li><a href="mailto:hexo@3.3.9" target="_blank" rel="noopener">hexo@3.3.9</a></li>
+</ul>
+<h1 id="三、搭建环境准备"><a href="#三、搭建环境准备" class="headerlink" title="三、搭建环境准备"></a>三、搭建环境准备</h1><p>大概可以分为以下三步 </p>
+<ul>
+<li>Node.js 的安装和准备 </li>
+<li>git的安装和准备 </li>
+<li>gitHub账户的配置<h2 id="3-1、配置Node-js环境"><a href="#3-1、配置Node-js环境" class="headerlink" title="3.1、配置Node.js环境"></a>3.1、配置Node.js环境</h2>下载Node.js安装文件：</li>
+</ul>
+<ul>
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">node-v6.11.4-x64</a>根据自己windows版本选择相应的安装文件。如图所示：<br><img src="/images/githubHexo/nodejs.png" alt="nodejs"><br>保持默认设置即可，一路Next，安装很快就结束了。 然后我们检查一下是不是要求的组件都安装好了，同时按下Win和R，打开运行窗口：Windows的运行界面<br><img src="/images/githubHexo/cmd.png" alt="cmd"><br>在新打开的窗口中输入cmd，敲击回车，打开命令行界面。（下文将直接用打开命令行来表示以上操作，记住哦~） 在打开的命令行界面中，输入<br>node -v<br>npm -v<br>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。<br><img src="/images/githubHexo/cmdnode.png" alt="cmdnode"><br>配置Git环境</li>
+</ul>
+<p>下载Git安装文件：</p>
+<p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git官网下载地址</a></p>
+<p>然后就进入了Git的安装界面，如图：<br><img src="/images/githubHexo/git.png" alt="git"><br>保持默认设置，一路next，直到安装完成。<br>右键-&gt;git bash here输入以下指令查看安装是否成功<br><code>git --version</code><br>如图：<br><img src="/images/githubHexo/gitversion.png" alt="gitversion"></p>
+<h2 id="3-1、github账户的注册和配置"><a href="#3-1、github账户的注册和配置" class="headerlink" title="3.1、github账户的注册和配置"></a>3.1、github账户的注册和配置</h2><p>如果已经拥有账号，请跳过此步~</p>
+<p>3.11、Github注册<br>打开<a href="https://github.com/，在下图的框中，分别输入自己的用户名，邮箱，密码。" target="_blank" rel="noopener">https://github.com/，在下图的框中，分别输入自己的用户名，邮箱，密码。</a><br>然后前往自己刚才填写的邮箱，点开Github发送给你的注册确认信，确认注册，结束注册流程。<br>一定要确认注册，否则无法使用gh-pages！<br>3.12、创建代码库<br>登陆之后，点击页面右上角的加号，选择New repository：<br><img src="/images/githubHexo/gitku.png" alt="gitku"><br>新建代码库</p>
+<p>进入代码库创建页面：</p>
+<p>在Repository name下填写yourname.github.io，Description (optional)下填写一些简单的描述（不写也没有关系），如图所示：<br><img src="/images/githubHexo/gitre.png" alt="gitre"><br>注意：比如我的github名称是zy8las ,这里你就填 zy8las.github.io,如果你的名字是xujun，那你就填 xujun.github.io</p>
+<p>代码库设置<br>正确创建之后，你将会看到如下界面：<br><img src="/images/githubHexo/gitpe.png" alt="gitpe"><br>接下来开启gh-pages功能，点击界面右侧的Settings，你将会打开这个库的setting页面，向下拖动，直到看见GitHub Pages，如图：</p>
+<p>点击Automatic page generator，Github将会自动替你创建出一个gh-pages的页面。 如果你的配置没有问题，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了~ 如果yourname.github.io已经可以正常访问了，那么Github一侧的配置已经全部结束了。<br><img src="/images/githubHexo/gitset.png" alt="gitset"><br>到此搭建hexo博客的相关环境配置已经完成，下面开始讲解Hexo的相关配置</p>
+<h2 id="3-2、安装Hexo"><a href="#3-2、安装Hexo" class="headerlink" title="3.2、安装Hexo"></a>3.2、安装Hexo</h2><p>在自己认为合适的地方创建一个文件夹，这里我以E：/hexo 为例子讲解，首先在E盘目录下创建Hexo文件夹，并在命令行的窗口进入到该目录<br><img src="/images/githubHexo/cmdhexo.png" alt="cmdhexo"><br>在命令行中输入：</p>
+<p>npm install -g hexo<br>可能你会看到一个WARN，但是不用担心，这不会影响你的正常使用。 然后输入</p>
+<p>npm install hexo –save</p>
+<p>然后你会看到命令行窗口刷了一大堆白字，下面我们来看一看Hexo是不是已经安装好了。 在命令行中输入：</p>
+<p>hexo -v<br><img src="/images/githubHexo/hexov.png" alt="hexov"><br>如果你看到了如图文字，则说明已经安装成功了。</p>
+<h2 id="3-21、hexo的相关配置"><a href="#3-21、hexo的相关配置" class="headerlink" title="3.21、hexo的相关配置"></a>3.21、hexo的相关配置</h2><p>1、初始化Hexo<br>接着上面的操作，输入：<br>hexo init<br>然后输入：</p>
+<p>npm install</p>
+<p>之后npm将会自动安装你需要的组件，只需要等待npm操作即可。</p>
+<p>2、首次体验Hexo<br>继续操作，同样是在命令行中，输入：</p>
+<p>hexo g<br><img src="/images/githubHexo/hexog.png" alt="hexog"><br>然后输入：</p>
+<p>hexo s</p>
+<p>然后会提示：</p>
+<p>INFO Hexo is running at <a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">http://0.0.0.0:4000/</a>. Press Ctrl+C to stop.<br>在浏览器中打开<a href="http://localhost:4000/，你将会看到：" target="_blank" rel="noopener">http://localhost:4000/，你将会看到：</a><br><img src="/images/githubHexo/hexog.png" alt="hexopage"><br>到目前为止，Hexo在本地的配置已经全都结束了。</p>
+<p>下面会讲解怎样将Hexo与github page 联系起来</p>
+<h1 id="四、怎样将Hexo与github-page-联系起来"><a href="#四、怎样将Hexo与github-page-联系起来" class="headerlink" title="四、怎样将Hexo与github page 联系起来"></a>四、怎样将Hexo与github page 联系起来</h1><p>大概分为以下几步 </p>
+<ul>
+<li>配置git个人信息 </li>
+<li>配置Deployment</li>
+</ul>
+<p>配置Git个人信息</p>
+<p>如果你之前已经配置好git个人信息，请跳过这一个 步骤，直接来到</p>
+<p>1、设置Git的user name和email：(如果是第一次的话)</p>
+<p>git config –global user.name “zy8las”<br>git config –global user.email “<a href="mailto:464999578@qq.com" target="_blank" rel="noopener">464999578@qq.com</a>“</p>
+<p>2、生成密钥</p>
+<p> ssh-keygen -t rsa -C “<a href="mailto:464999578@qq.com" target="_blank" rel="noopener">464999578@qq.com</a>“(换成你的邮箱地址)<br>接着出现的一些步骤都可以回车跳过。</p>
+<p>2.1、配置github账户的ssh key<br>打开id_rsa.pub文件将一整串公钥拷贝下来</p>
+<p>进入你的github账户设置，在ssh and GPG keys中新增一个ssh key，如下<br><img src="/images/githubHexo/ssh.png" alt="ssh"><br> 同时需要验证ssh key<br> ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p> 出现下面的语句说明你的ssh key已经配置好了<br> Hi wispyoureyes! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+<h2 id="4-1、配置Deployment"><a href="#4-1、配置Deployment" class="headerlink" title="4.1、配置Deployment"></a>4.1、配置Deployment</h2><p> 同样在_config.yml文件中，找到Deployment，然后按照如下修改：</p>
+<p> deploy:<br>   type: git<br>   repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourname/yourname.github.io.git<br>   branch: master</p>
+<p> 比如我的仓库的地址是<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:zy8las/zy8las.github.io.git，所以配置如下</p>
+<p> deploy:<br>   type: git<br>   repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:zy8las/zy8las.github.io.git<br>   branch: master</p>
+<h1 id="五、写博客、发布文章"><a href="#五、写博客、发布文章" class="headerlink" title="五、写博客、发布文章"></a>五、写博客、发布文章</h1><p>新建一篇博客，执行下面的命令：<br>hexo new post “article title”<br><img src="/images/githubHexo/blogs.png" alt="blogs"><br>这时候在我的 电脑的目录下 F:\hexo\source\ _posts 将会看到 article title.md 文件</p>
+<p>用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：<br>hexo g   // 生成<br>hexo d   // 部署<br>当然你也可以执行下面的命令，相当于上面两条命令的效果<br>hexo d -g #在部署前先生成<br>部署成功后访问 你的地址，<a href="https://yourName.github.io" target="_blank" rel="noopener">https://yourName.github.io</a>   （这里输入我的地址： <a href="https://zy8las.github.io" target="_blank" rel="noopener">https://zy8las.github.io</a> ),将可以看到生成的文章。</p>
+<h3 id="踩坑提醒"><a href="#踩坑提醒" class="headerlink" title="踩坑提醒"></a>踩坑提醒</h3><p>1）注意需要提前安装一个扩展：<br>npm install hexo-deployer-git –save<br>如果没有执行者行命令，将会提醒</p>
+<p>deloyer not found:git</p>
+<h1 id="六、主题推荐"><a href="#六、主题推荐" class="headerlink" title="六、主题推荐"></a>六、主题推荐</h1><p>每个不同的主题会需要不同的配置，主题配置文件在主题目录下的_config.yml。有两个比较好的主题推荐给大家。</p>
+<h2 id="6-1、Yilia"><a href="#6-1、Yilia" class="headerlink" title="6.1、Yilia"></a>6.1、Yilia</h2><p>Yilia 是为 hexo 2.4+制作的主题。<br>崇尚简约优雅，以及极致的性能。<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">Yilia地址</a></p>
+<h2 id="6-2、NexT"><a href="#6-2、NexT" class="headerlink" title="6.2、NexT"></a>6.2、NexT</h2><p><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">配置教程</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/21/墙/" class="archive-article-date">
-  	<time datetime="2018-12-21T06:57:55.973Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/cloudera大数据平台搭建/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:52:12.925Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/win10安装ubuntu/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:47:10.650Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/error集锦/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:46:41.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/翻墙/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.711Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/翻墙/">翻墙工具</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/hexo-图片加载问题/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/hexo-图片加载问题/">关于hexo 图片无法加载的解决办法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-port">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/20/python总结/" class="archive-article-date">
-  	<time datetime="2018-04-20T13:17:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/20/python总结/">python 总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/hexo个人博客多终端共享/" class="archive-article-date">
-  	<time datetime="2018-04-18T06:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/hexo个人博客多终端共享/">hexo个人博客多终端共享</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/17/markdown语法/" class="archive-article-date">
-  	<time datetime="2018-04-17T07:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/markdown语法/">markdown语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/jenkins/" class="archive-article-date">
-  	<time datetime="2017-10-19T08:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/jenkins/">jenkins安装详解windows 7</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/github-hexo搭建个人博客/">展开全文 >></a>
+        </p>
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </nav>
   
 
@@ -453,9 +311,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,18 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | zy8las</title>
+  <title>zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人生没有失败，只是暂时停止成功">
-<meta property="og:type" content="website">
+  <meta name="description" content="V2Ray快速上手 介绍酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。  V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技">
+<meta property="og:type" content="article">
 <meta property="og:title" content="zy8las">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/12/21/墙/index.html">
 <meta property="og:site_name" content="zy8las">
-<meta property="og:description" content="人生没有失败，只是暂时停止成功">
+<meta property="og:description" content="V2Ray快速上手 介绍酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。  V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/墙/v2ray-core.jpg">
+<meta property="og:image" content="http://yoursite.com/images/墙/v2raycat.jpg">
+<meta property="og:image" content="http://yoursite.com/images/墙/v2rayguan.jpg">
+<meta property="og:image" content="http://yoursite.com/images/墙/file.jpg">
+<meta property="og:image" content="http://yoursite.com/images/墙/v2rayN.jpg">
+<meta property="og:image" content="http://yoursite.com/images/墙/v2rayclient.jpg">
+<meta property="og:image" content="http://yoursite.com/images/墙/id.jpg">
+<meta property="og:updated_time" content="2018-12-21T07:00:54.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zy8las">
-<meta name="twitter:description" content="人生没有失败，只是暂时停止成功">
+<meta name="twitter:description" content="V2Ray快速上手 介绍酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。  V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技">
+<meta name="twitter:image" content="http://yoursite.com/images/墙/v2ray-core.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zy8las" type="application/atom+xml">
   
@@ -156,281 +165,178 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-墙" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>V2Ray快速上手</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。 </p>
+<p>V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技术比较新。但是，传统的配置也比较复杂，是属于真萌新劝退向工具。不过还好，乾颐堂现任明教教主在其公开课，《教主技术进化论第35期.V2R》的视频里<a href="https://www.bilibili.com/video/av30249805" target="_blank" rel="noopener">这里</a>）有快速上手的讲解，对于萌新来说，可能是一大福音。下面是对其课程的步骤总结。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>下载v2ray的核心程序和v2rayN.exe客户端程序</p>
+<ul>
+<li><p>v2ray核心程序<a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">下载</a></p>
+<p><img src="/images/墙/v2ray-core.jpg" alt="core"></p>
+</li>
+</ul>
+</li>
+<li><p>在<a href="https://v2ray.cat/" target="_blank" rel="noopener">v2ray.cat链接</a>或者<a href="https://www.v2ray.com/download/" target="_blank" rel="noopener">v2ray官方下载</a>v2rayN.exe客户端<br><img src="/images/墙/v2raycat.jpg" alt="v2rayvat"><br><img src="/images/墙/v2rayguan.jpg" alt="v2rayguan"><br>得到文件：<img src="/images/墙/file.jpg" alt="file"></p>
+</li>
+<li><p>将核心压缩包解压，将v2rayN解压，将v2rayN解压的文件放到v2ray核心的根目录下，还有一个文件zh-Hans是汉化的，内容如下<img src="/images/墙/v2rayN.jpg" alt="v2ray"><br>运行v2rayN.exe，在任务量会出现其图标，右键“启动http代理”—》“http代理模式”—–》“开启pac并自动配置pac”（意思为国内IP直连，国外IP代理，如果遇见安全软件弹出提示，请允许软件运行更改），然后，退出v2rayN.exe 客户端。再重新双击打开，以便重启服务。如果出现安全提示，请允许软件执行。<img src="/images/墙/v2rayclient.jpg" alt="v2rayclient"></p>
+</li>
+<li><p>配置服务器<br>v2ray可以兼容酸酸和酸酸乳的协议，如果你有酸酸和酸酸乳的服务器节点，同样可以使用。<br>你可以在网上找收费或者免费的站点添加进去。教主在视频里给了两个免费的节点网站（不过都要先架梯子过去）<a href="https://free-ss.site/" target="_blank" rel="noopener">这里1</a>和<a href="https://fangeqiang.com/" target="_blank" rel="noopener">这里2</a>，进入链接后点解免费账号—-》v2ray—-》分享账号<img src="/images/墙/id.jpg" alt="id">,然后将复制vmess中的内容，打开v2rayN客户端，点击服务器—-》从剪切板导入批量url—》添加成功后点击重启服务，翻墙搭建完成。</p>
+<h3 id="手机版"><a href="#手机版" class="headerlink" title="手机版"></a>手机版</h3><ol>
+<li>手机版需要下载bifrost客户端，然后找免费代码</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/avatar.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/21/墙/" class="archive-article-date">
-  	<time datetime="2018-12-21T06:57:55.973Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/cloudera大数据平台搭建/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:52:12.925Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/win10安装ubuntu/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:47:10.650Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/error集锦/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:46:41.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/翻墙/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.711Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/翻墙/">翻墙工具</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/hexo-图片加载问题/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/hexo-图片加载问题/">关于hexo 图片无法加载的解决办法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-port">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/20/python总结/" class="archive-article-date">
-  	<time datetime="2018-04-20T13:17:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/20/python总结/">python 总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/hexo个人博客多终端共享/" class="archive-article-date">
-  	<time datetime="2018-04-18T06:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/hexo个人博客多终端共享/">hexo个人博客多终端共享</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/17/markdown语法/" class="archive-article-date">
-  	<time datetime="2018-04-17T07:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/markdown语法/">markdown语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/jenkins/" class="archive-article-date">
-  	<time datetime="2017-10-19T08:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/jenkins/">jenkins安装详解windows 7</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/12/21/墙/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/11/01/cloudera大数据平台搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">2.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手机版"><span class="toc-number">3.</span> <span class="toc-text">手机版</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -454,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
