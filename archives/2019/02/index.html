@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>zy8las</title>
+  <title>Archives: 2019/2 | zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="error集锦  err1  123456789101112131415Exception in thread &amp;quot;main&amp;quot; java.lang.NoClassDefFoundError: storm/kafka/BrokerHosts    at java.lang.Class.getDeclaredMethods0(Native Method)    at java.lan">
-<meta property="og:type" content="article">
+  <meta name="description" content="人生没有失败，只是暂时停止成功">
+<meta property="og:type" content="website">
 <meta property="og:title" content="zy8las">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/error集锦/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2019/02/index.html">
 <meta property="og:site_name" content="zy8las">
-<meta property="og:description" content="error集锦  err1  123456789101112131415Exception in thread &amp;quot;main&amp;quot; java.lang.NoClassDefFoundError: storm/kafka/BrokerHosts    at java.lang.Class.getDeclaredMethods0(Native Method)    at java.lan">
+<meta property="og:description" content="人生没有失败，只是暂时停止成功">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T07:19:43.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zy8las">
-<meta name="twitter:description" content="error集锦  err1  123456789101112131415Exception in thread &amp;quot;main&amp;quot; java.lang.NoClassDefFoundError: storm/kafka/BrokerHosts    at java.lang.Class.getDeclaredMethods0(Native Method)    at java.lan">
+<meta name="twitter:description" content="人生没有失败，只是暂时停止成功">
   
     <link rel="alternative" href="/atom.xml" title="zy8las" type="application/atom+xml">
   
@@ -157,210 +156,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-error集锦" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-    <div class="article-entry" itemprop="articleBody">
+    
       
-        <p>error集锦</p>
-<ul>
-<li>err1</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: storm/kafka/BrokerHosts</span><br><span class="line">    at java.lang.Class.getDeclaredMethods0(Native Method)</span><br><span class="line">    at java.lang.Class.privateGetDeclaredMethods(Class.java:2570)</span><br><span class="line">    at java.lang.Class.getMethod0(Class.java:2813)</span><br><span class="line">    at java.lang.Class.getMethod(Class.java:1663)</span><br><span class="line">    at sun.launcher.LauncherHelper.getMainMethod(LauncherHelper.java:494)</span><br><span class="line">    at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:486)</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: storm.kafka.BrokerHosts</span><br><span class="line">    at java.net.URLClassLoader$1.run(URLClassLoader.java:366)</span><br><span class="line">    at java.net.URLClassLoader$1.run(URLClassLoader.java:355)</span><br><span class="line">    at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">    at java.net.URLClassLoader.findClass(URLClassLoader.java:354)</span><br><span class="line">    at java.lang.ClassLoader.loadClass(ClassLoader.java:425)</span><br><span class="line">    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)</span><br><span class="line">    at java.lang.ClassLoader.loadClass(ClassLoader.java:358)</span><br></pre></td></tr></table></figure>
-<p>原因：storm的server端的lib包中缺少jar包   </p>
-<p>==一定要注意版本，本文用的kafka_2.11-0.10.0.0，storm1.1.0==</p>
-<p>把maven本地库中的<code>storm-kafka-1.1.0.jar</code>复制到$STORM_HOME/lib下</p>
-<ul>
-<li>err2</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: kafka/api/OffsetRequest</span><br><span class="line">        at org.apache.storm.kafka.KafkaConfig.&lt;init&gt;(KafkaConfig.java:44)</span><br><span class="line">        at org.apache.storm.kafka.SpoutConfig.&lt;init&gt;(SpoutConfig.java:42)</span><br><span class="line">        at Kafka2StormTopologyMain.main(Kafka2StormTopologyMain.java:16)</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: kafka.api.OffsetRequest</span><br><span class="line">        at java.net.URLClassLoader$1.run(URLClassLoader.java:366)</span><br><span class="line">        at java.net.URLClassLoader$1.run(URLClassLoader.java:355)</span><br><span class="line">        at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">        at java.net.URLClassLoader.findClass(URLClassLoader.java:354)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(ClassLoader.java:425)</span><br><span class="line">        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(ClassLoader.java:358)</span><br><span class="line">        ... 3 more</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的 <em>kafka_2.11-0.10.0.0.jar</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-<ul>
-<li>err3</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: scala/ScalaObject</span><br><span class="line">        at java.lang.ClassLoader.defineClass1(Native Method)</span><br><span class="line">        at java.lang.ClassLoader.defineClass(ClassLoader.java:800)</span><br><span class="line">        at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)</span><br><span class="line">        at java.net.URLClassLoader.defineClass(URLClassLoader.java:449)</span><br><span class="line">        at java.net.URLClassLoader.access$100(URLClassLoader.java:71)</span><br><span class="line">        at java.net.URLClassLoader$1.run(URLClassLoader.java:361)</span><br><span class="line">        at java.net.URLClassLoader$1.run(URLClassLoader.java:355)</span><br><span class="line">        at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">        at java.net.URLClassLoader.findClass(URLClassLoader.java:354)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(ClassLoader.java:425)</span><br><span class="line">        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)</span><br><span class="line">        at java.lang.ClassLoader.loadClass(ClassLoader.java:358)</span><br><span class="line">        at org.apache.storm.kafka.KafkaConfig.&lt;init&gt;(KafkaConfig.java:44)</span><br><span class="line">        at org.apache.storm.kafka.SpoutConfig.&lt;init&gt;(SpoutConfig.java:42)</span><br><span class="line">        at Kafka2StormTopologyMain.main(Kafka2StormTopologyMain.java:16)</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的 <em>scala-library-2.11.8.jar</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-<ul>
-<li>err4</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: com/google/common/base/Strings</span><br><span class="line">        at org.apache.storm.kafka.KafkaSpout.declareOutputFields(KafkaSpout.java:184)</span><br><span class="line">        at org.apache.storm.topology.TopologyBuilder.getComponentCommon(TopologyBuilder.java:383)</span><br><span class="line">        at org.apache.storm.topology.TopologyBuilder.createTopology(TopologyBuilder.java:135)</span><br><span class="line">        at Kafka2StormTopologyMain.main(Kafka2StormTopologyMain.java:27)</span><br><span class="line"></span><br><span class="line">作者：zhouhaolong1</span><br><span class="line">链接：https://www.jianshu.com/p/70c3a7f56386</span><br><span class="line">來源：简书</span><br><span class="line">简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的 <em>guava-15.0.jarr</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-<ul>
-<li>err5</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: org/apache/curator/RetryPolicy</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的curator-client-2.6.0.jar和 <em>curator-framework-2.6.0.jar</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-<ul>
-<li>err6</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: org/json/simple/JSONValue</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的 <em>json-simple-1.1.jar</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-<ul>
-<li>err7</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: com/yammer/metrics/Metrics at kafka.metrics.KafkaMetricsGroup</span><br><span class="line">$class.newTimer(KafkaMetricsGroup.scala:52) at</span><br><span class="line">kafka.consumer.FetchRequestAndResponseMetrics.newTimer(FetchRequestAndResponseStats.scala:25)</span><br><span class="line">at kafka.consumer.FetchRequestAndResponseMetrics.&lt;init&gt;</span><br><span class="line">(FetchRequestAndResponseStats.scala:26) at kafka.consumer.FetchRequestAndResponseStats.&lt;init&gt;</span><br><span class="line">(FetchRequestAndResponseStats.scala:37) at</span><br><span class="line">kafka.consumer.FetchRequestAndResponseStatsRegistry$$anonfun$2.apply</span><br><span class="line">(FetchRequestAndResponseStats.scala:50) ...</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的 <em>metrics-core-2.2.0.jar</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-<ul>
-<li>err8</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoSuchMethodError: org.apache.zookeeper.ZooKeeper.&lt;init&gt;</span><br></pre></td></tr></table></figure>
-<p>解决:<br>把maven本地库中的 <em>zookeeper-3.4.6.jar</em> 复制到 <strong>$STORM_HOME/lib</strong>下</p>
-
       
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/avatar.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/02/28/jvm学习整理/" class="archive-article-date">
+  	<time datetime="2019-02-28T09:22:30.857Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
+</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+    	 
+        <div class="article-info info-on-right">
+          
+          
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/11/01/error集锦/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/11/01/win10安装ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/11/01/翻墙/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">翻墙工具</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -383,8 +215,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

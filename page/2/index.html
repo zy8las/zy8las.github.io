@@ -158,6 +158,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jenkins" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/jenkins/">jenkins安装详解windows 7</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/jenkins/" class="archive-article-date">
+  	<time datetime="2017-10-19T08:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、修改默认的jenkins安装路径"><a href="#一、修改默认的jenkins安装路径" class="headerlink" title="一、修改默认的jenkins安装路径"></a>一、修改默认的jenkins安装路径</h1><p>因为jenkins默认安装在c盘 C:\Users\Administrator.jenkins下，那怎样将安装路径修改至e盘呢？</p>
+<p>新建一个系统变量：JENKINS_HOME，值为E:\jenkins\jenkinspro，或者其他目录。再将此路径添加至Path里。<br><img src="/images/jenkins/huanjing.jpg" alt="huanjing"></p>
+<h1 id="二、安装jenkins"><a href="#二、安装jenkins" class="headerlink" title="二、安装jenkins"></a>二、安装jenkins</h1><ul>
+<li>2.1、下载jenkins<br>首先到Jenkins官网下载windows安装包。在主页的右侧版本下载框里选择Windows，下载zip文件。<br><a href="https://jenkins.io/" target="_blank" rel="noopener">官网</a></li>
+<li>2.2、解压运行，一路下一步(运行前先关闭8080端口，否则可能安装不成功，关闭方式查看温馨提示)</li>
+<li>2.3、安装完成后，安装程序会自动打开默认浏览器，打开Jenkins主页。</li>
+<li>2.4、jenkins安装完成<br><img src="/images/jenkins/jenkins.jpg" alt="jenkins"><h1 id="三、修改jenkins默认端口"><a href="#三、修改jenkins默认端口" class="headerlink" title="三、修改jenkins默认端口"></a>三、修改jenkins默认端口</h1>可能有一些原因，8080端口被占用了，无法使用时需要修改jenkins的启动端口号。<br>如果首次安装，建议先停止原有系统的8080端口占用，等jenkins安装完成后，再进行修改，然后该回8080的原系统端口。</li>
+<li>3.1、先停止jenkins服务<br>win+r-》cmd-》net stop jenkins</li>
+<li><p>3.2、打开E:\jenkins\Jenkins\jenkins.xml<br>将<arguments>元素中的httpPort的值8080改为其他值即可</arguments></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;arguments&gt;-Xrs -Xmx256m -Dhudson.lifecycle=hudson.lifecycle.WindowsServiceLifecycle -jar &quot;%BASE%\jenkins.war&quot; --httpPort=8099&lt;/arguments&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.3、重启jenkins服务<br>win+r-》cmd-》net start jenkins</p>
+</li>
+</ul>
+<h1 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h1><p>查看网络端口pid<br>win+r-》cmd-》netstat -ano|findstr 8080<br>停止响应pid端口<br>win+r-》cmd-》taskkill /pid pid号 /f</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/jenkins/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-github-hexo搭建个人博客" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -299,7 +376,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 zy8las
+    		&copy; 2019 zy8las
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
