@@ -1,3 +1,7 @@
+---
+title: cloudera大数据平台搭建流程
+tags:
+---
 cloudera大数据平台搭建流程
 
 # 基础环境
