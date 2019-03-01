@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>翻墙工具 | zy8las</title>
+  <title>jvm虚拟机 | zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、v2ray 翻墙方法 1、下载v2ray网站 2、以猎豹浏览器为例，猎豹浏览器设置-》应用市场-》SwitchyOmega 下载 3、配置SwitchyOmega SwitchyOmega 4、免费网站 v2ray 5、根据更新时间更新 config.json">
+  <meta name="description" content="jvm虚拟机 一、介绍虚拟机 系统虚拟机：VM、virtualbox 程序虚拟机：java虚拟机（hotspot） java虚拟机主要执行Java字节码指令  二、Java虚拟机基本结构  类加载子系统：负责从文件系统或者网络中加载class信息，加载的信息存放在一块称为方法区的内存空间 方法区：存放类信息、常量信息、常量池信息，包括字符串面量和数字常量 java堆：在java虚拟机启动的时候建立">
 <meta property="og:type" content="article">
-<meta property="og:title" content="翻墙工具">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/翻墙/index.html">
+<meta property="og:title" content="jvm虚拟机">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/jvm学习整理/index.html">
 <meta property="og:site_name" content="zy8las">
-<meta property="og:description" content="1、v2ray 翻墙方法 1、下载v2ray网站 2、以猎豹浏览器为例，猎豹浏览器设置-》应用市场-》SwitchyOmega 下载 3、配置SwitchyOmega SwitchyOmega 4、免费网站 v2ray 5、根据更新时间更新 config.json">
+<meta property="og:description" content="jvm虚拟机 一、介绍虚拟机 系统虚拟机：VM、virtualbox 程序虚拟机：java虚拟机（hotspot） java虚拟机主要执行Java字节码指令  二、Java虚拟机基本结构  类加载子系统：负责从文件系统或者网络中加载class信息，加载的信息存放在一块称为方法区的内存空间 方法区：存放类信息、常量信息、常量池信息，包括字符串面量和数字常量 java堆：在java虚拟机启动的时候建立">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T08:41:36.711Z">
+<meta property="og:image" content="http://yoursite.com/images/jvm/jvm.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm/实例过程.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm/heap.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm/object.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm/IP级别负载均衡.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm/反向代理实现负载均衡.jpg">
+<meta property="og:updated_time" content="2019-03-01T03:29:06.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="翻墙工具">
-<meta name="twitter:description" content="1、v2ray 翻墙方法 1、下载v2ray网站 2、以猎豹浏览器为例，猎豹浏览器设置-》应用市场-》SwitchyOmega 下载 3、配置SwitchyOmega SwitchyOmega 4、免费网站 v2ray 5、根据更新时间更新 config.json">
+<meta name="twitter:title" content="jvm虚拟机">
+<meta name="twitter:description" content="jvm虚拟机 一、介绍虚拟机 系统虚拟机：VM、virtualbox 程序虚拟机：java虚拟机（hotspot） java虚拟机主要执行Java字节码指令  二、Java虚拟机基本结构  类加载子系统：负责从文件系统或者网络中加载class信息，加载的信息存放在一块称为方法区的内存空间 方法区：存放类信息、常量信息、常量池信息，包括字符串面量和数字常量 java堆：在java虚拟机启动的时候建立">
+<meta name="twitter:image" content="http://yoursite.com/images/jvm/jvm.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zy8las" type="application/atom+xml">
   
@@ -157,33 +164,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-翻墙" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-jvm学习整理" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      翻墙工具
+      jvm虚拟机
     </h1>
   
 
         
-        <a href="/2018/11/01/翻墙/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.711Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
+        <a href="/2017/10/10/jvm学习整理/" class="archive-article-date">
+  	<time datetime="2017-10-10T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1、v2ray-翻墙方法"><a href="#1、v2ray-翻墙方法" class="headerlink" title="1、v2ray 翻墙方法"></a>1、v2ray 翻墙方法</h1><ul>
-<li>1、下载v2ray<a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">网站</a></li>
-<li>2、以猎豹浏览器为例，猎豹浏览器设置-》应用市场-》SwitchyOmega 下载</li>
-<li>3、配置SwitchyOmega <a href="/images/SwitchyOmega/SwitchyOmega.jpg">SwitchyOmega</a></li>
-<li>4、免费网站 <a href="https://free-ss.site/" target="_blank" rel="noopener">v2ray</a></li>
-<li>5、根据更新时间更新 config.json</li>
+        <p>jvm虚拟机</p>
+<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>虚拟机</p>
+<p>系统虚拟机：VM、virtualbox</p>
+<p>程序虚拟机：java虚拟机（hotspot）</p>
+<p>java虚拟机主要执行Java字节码指令 </p>
+<h4 id="二、Java虚拟机基本结构"><a href="#二、Java虚拟机基本结构" class="headerlink" title="二、Java虚拟机基本结构"></a>二、Java虚拟机基本结构</h4><p><img src="/images/jvm/jvm.jpg" alt="jvm"></p>
+<ol>
+<li>类加载子系统：负责从文件系统或者网络中加载class信息，加载的信息存放在一块称为方法区的内存空间</li>
+<li>方法区：存放类信息、常量信息、常量池信息，包括字符串面量和数字常量</li>
+<li>java堆：在java虚拟机启动的时候建立java堆，他是java程序最主要的内存工作区，几乎所有的对象实例都存在java的堆中，堆空间是所有线程共享的。</li>
+<li>直接内存：java的NIO库允许java程序使用直接内存，从而提高性能，通常直接内存速度会优于java堆，读写频繁的场合可能会考虑使用</li>
+<li>java栈：每个虚拟机线程都有一个是有的栈，一个线程的java栈在线程创建的时候被创建，java栈中保存着局部变量，方法参数，同时Java的方法调用，返回值等</li>
+<li>本地方法栈：本地方法栈和java的栈非常类似，本地方法栈用于本地方法调用，java虚拟机允许java直接调用本地方法栈</li>
+<li>垃圾回收子系统：垃圾回收子系统是java的核心，也是必不可少的，java有自己的垃圾清理机制，开发人员无需手动清理</li>
+<li>略</li>
+<li>执行引擎：虚拟机最核心的组成就是执行引擎，他负责执行虚拟机的字节码，一般先编译成机器码后执行</li>
+</ol>
+<h4 id="三、java堆介绍"><a href="#三、java堆介绍" class="headerlink" title="三、java堆介绍"></a>三、java堆介绍</h4><p>1、堆解决的是数据存储问题，即数据存在哪</p>
+<p>2、栈解决的程序运行问题，即程序如何执行、如何处理数据</p>
+<p>3、方法区则是辅助堆栈的永久区，解决堆栈信息的产生，类信息、静态信息存在方法区中</p>
+<p><img src="/images/jvm/实例过程.jpg" alt=""></p>
+<p>heap图</p>
+<p><img src="/images/jvm/heap.jpg" alt="heap"></p>
+<p>1、刚实例化的对象进入到eden区，经过gc后进入s0或s1区，其中s0和s1区大小相等，可以相互转换的空间</p>
+<p>2、老年代产生gc的可能性不高、15gc后进入到老年代</p>
+<p>java堆是java应用程序最密不可分的内存空间，几乎所有对象都存在其中，java堆完全自动化管理，通过垃圾回收机制，垃圾对象会自动清理，不需要显示释放。</p>
+<h4 id="四、java栈介绍"><a href="#四、java栈介绍" class="headerlink" title="四、java栈介绍"></a>四、java栈介绍</h4><p>栈由三部分组成：局部变量表、操作数栈、帧数据区</p>
+<p>1、局部变量表：用于报错函数的参数和局部变量表</p>
+<p>2、操作数栈：保存计算的中间结果、变量的临时存储空间</p>
+<p>3、帧数据区：函数返回或者出现异常时</p>
+<p>4、方法区是一块所有线程共享的内存区域，保存类信息</p>
+<p>定义类太多，导致方法区溢出，虚拟机会抛出内存溢出错误</p>
+<h4 id="五、参数设置"><a href="#五、参数设置" class="headerlink" title="五、参数设置"></a>五、参数设置</h4><ol>
+<li><p>堆参数分配</p>
+<p>-XX  配置虚拟机应用程序的，系统级别（jvm）的配置，配置日志信息</p>
+<p>非-XX基本上是对应用层面上的配置</p>
+<p>-XX:(+/-)  +表示启用  - 表示禁用</p>
+</li>
+<li><p>参数</p>
+<p>-XX:+printGC   虚拟机启动后，遇到GC就打印日志</p>
+<p>-XX:+UseSerialGC  启动串行GC</p>
+<p>-XX:+printGCDetials 查看GC详细情况，包括各分区的情况</p>
+<p>-Xms:   java程序启动时初始堆大小</p>
+<p>-Xmx： java程序能够获得的最大堆大小</p>
+<p>-XX:+printCommandLineFlags  输出虚拟机参数</p>
+<p>-XlogGC:d:/gc.log   将GC日志输出成文件</p>
+</li>
+<li><p>介绍</p>
+<p>[GC[DefNew:658k-&gt;120k]]: DefNew表示新生代，658k表示回收前，120k表示回收后</p>
+<p>perm：永久区</p>
+<p>Tenured ：老年代</p>
+<p>实际工作中，直接将初始堆大小与最大堆大小设置相等，好处是可以减少程序运行时的垃圾回收次数，提高性能。</p>
+</li>
+<li><p>新生代配置</p>
+<p>-Xmn ： 设置新生代大小，新生代设置比较大会减少老年代的大小，这个参数对系统的性能及GC行为有很大的影响，一般设置整个堆空间的1/3或者1/4左右</p>
+<p>-XX:SurvivorRatio  设置新生代中eden空间和from/to空间的比例</p>
+<p>-XX:SurvivorRatio=eden/from=eden/to</p>
+<p>-XX:NewRatio=老年代/新生代</p>
+<p>不同的堆分布情况，对系统的执行会产生一定的影响，应该根据系统的特点做出合理的配置。</p>
+<p>基本策略：尽可能将对象预留在新生代，减少老年代的GC次数。</p>
+<p>除了可以设置新生代的绝对大小（-Xmn）还可以设置新生代与老年代的比例，-XX:NewRatio=老年代/新生代</p>
+</li>
+<li><p>堆溢出处理（OOM）</p>
+<p>堆溢出导致内存溢出错误 OOM</p>
+<p>-XX:HeapDumpOnOutOfMemoryError  内存溢出时导出整个堆信息</p>
+<p>-XX:HeapDumpPath  导出堆的存放路径</p>
+<p>内存分析工具 MemoryAnalyzer</p>
+</li>
+<li><p>栈参数</p>
+<p>-Xss 指定线程的最大栈空间，这个参数也直接决定了函数可以调用的最大深度（一般递归时用）</p>
+<p>-XX：MaxPermSize  最大方法区大小，设置合适值，以免出现永久区内存溢出问题</p>
+<p>-XX：PermSize 方法区大小，默认64M</p>
+</li>
+<li><p>直接内存配置</p>
+<p>-XX:MaxDirectMemorySize</p>
+</li>
+<li><p>jvm启动模式</p>
+<p>client模式启动比较快，server模式启动比较慢</p>
+<p>长期使用用server模式，1.8以后都是server模式了</p>
+</li>
+</ol>
+<h4 id="六、垃圾回收"><a href="#六、垃圾回收" class="headerlink" title="六、垃圾回收"></a>六、垃圾回收</h4><ol>
+<li><p>介绍</p>
+<p>指内存中，不在被使用的对象</p>
+</li>
+<li><p>回收算法</p>
+<p>引用计数法、标记压缩算法、复制算法、分代、分区</p>
+<ul>
+<li>引用计数法：对象被引用时计数器加1，引用失效是减1，无法处理循环引用的情况，每次进行加减操作比较浪费系统资源</li>
+<li>标记清除法：分为标记和清除两个阶段进行处理内存中的对象，弊端：会出现空间碎片问题，垃圾回收后的空间不是连续的，不连续的内存空间比连续的内存空间效率低。</li>
+<li>复制算法:内存空间分为2块，每次只是用其中的一块，在垃圾回收时，将内存存留的对象复制到另一块，清理原内存，来回反复</li>
+<li>标记压缩算法：标记压缩算法在标记清除法的基础上做了优化，把存活的对象压缩到内存的一端，而后进行垃圾清理，java老年代中使用。</li>
+<li>分代算法：根据对象的特点把内存分为N块，根据每个内存的特点，使用不同的算法。</li>
+<li>分区算法：将整个内存分为N多个小的独立空间，每个小空间都可以独立使用，这样细粒度的控制一次回收多少个小空间和回收那些小空间，而不是对整个空间进行GC，从而提高性能，并减少GC停顿时间</li>
 </ul>
+</li>
+<li><p>垃圾回收是的GC停顿现象</p>
+<p>垃圾回收的任务是识别和回收垃圾对象进行内存清理，为了让垃圾回收器可以高效的执行，大部分情况下，会要求系统进入一个停顿的状态，停顿的目的是终止所有应用线程，只有这样系统才不会有新的垃圾，保证系统状态在某一瞬间的一致性，有利于更好的标记垃圾对象，因此会产生停顿现象。</p>
+</li>
+<li><p>新生代、老年代特点</p>
+<p>新生代回收的频率很高，但是每次回收耗时都很短，新生代对象死的快，用复制算法</p>
+<p>老年代回收频率低，耗时会相对较长，尽量减少老年代GC，使用标记压缩算法</p>
+<p>根据设置 -XX:MaxTenuringThreshold 参数，可以指定新生代对象经过多少次回收 后进入老年代。</p>
+<p>大对象（新生代eden区无法装入时，也会直接进入老年代）jvm里有一个参数设置对象的大小超过指定的大小后直接进入到老年代。-XX:PretenureSizeThreshold</p>
+</li>
+<li><p>TLAB区</p>
+<p>1、tlab区优先分配空间，tlab区是逻辑概念</p>
+<p>2、tlab即线程本地分配缓存，为加速对象分配而生的，每个线程都会产生一个tlab，可以避免多线程冲突问题，当大对象无法再tlab分配时，则会直接分配到堆上。</p>
+</li>
+<li><p>TLAB参数</p>
+<p>-XX:+UseTLAB  启用tlab</p>
+<p>-XX:_TLABSize 设置tlab大小</p>
+<p>-XX：TLABRefillWasteFraction 设置tlab空间单个对象大小，他是一个比值，默认是64，如果对象大于整个空间的1/61 ，则在堆创建对象。</p>
+<p>-XX:PrintTLAB 查看tlab信息</p>
+<p>-XX:ResizeTLAB 自调整TLABREfillWasteFraction阈值</p>
+</li>
+<li><p>对象创建流程</p>
+<p>对象的创建，根据数据大小，参数的设置，决定如何创建和分配</p>
+<p><img src="/images/jvm/object.jpg" alt="object"></p>
+</li>
+</ol>
+<h4 id="七、垃圾回收器"><a href="#七、垃圾回收器" class="headerlink" title="七、垃圾回收器"></a>七、垃圾回收器</h4><p>1、介绍</p>
+<p>串行垃圾回收器、并行垃圾回收器、CMS回收器、G1回收器</p>
+<p>2、串行垃圾回收器</p>
+<ul>
+<li>串行回收器可以在新生代和老年代使用</li>
+<li>串行回收器用于单线程垃圾回收的回收器，只有一个工作线程，专注性和独占性比较好<br>使用-XX:+UseSerialGC  设置新生代和老年代串行回收器</li>
+</ul>
+<p>3、并行垃圾回收器（parNew）</p>
+<ul>
+<li>parNew 工作在新生代的垃圾回收器，只是简单的将串行回收器多线程化，回收策略和串行一样</li>
+<li>-XX:UseParNewGC 新生代parNew回收器，老年代使用串行回收器</li>
+<li>-XX:parallelGCThreads 设置垃圾回收器的线程数，最好和计算机的CPU相当</li>
+</ul>
+<p>4、并行垃圾回收器（parallelGC）</p>
+<ul>
+<li>新生代parallelGC回收器，使用复制算法，多线程独占式，非常关注系统的吞吐量</li>
+<li>两个参数控制系统的吞吐量<br>-XX:MaxGCPauseMillis 设置最大垃圾回收停顿时间，如果希望减少GC停顿时间，可以将  MaxGCPauseMillis设置很小，这样会导致GC频繁，增加GC总时间，降低吞吐量<br>-XX:GCTimeRatio 吞吐量大小，一个在1-100之间的数，默认是99，系统将花费不超过1/(1+n)的时间用于垃圾回收，就是1/(1+99)=1%的时间。<br>-XX:+UseAdaptiveSizePolily  打开自适应模式，自动调整，在吞吐量和停顿时间之间找到平衡点</li>
+</ul>
+<p>5、并行回收器（parallelOldGC）</p>
+<ul>
+<li><p>老年代parallelOldGC回收器，多线程回收器，使用标记压缩算法，关注吞吐量</p>
+<p>-XX:+UseParallelOldGC 启用老年代并行垃圾回收器<br>-XX:+parallelGCThreads  设置回收器线程数</p>
+</li>
+</ul>
+<p>6、CMS回收器</p>
+<ul>
+<li>CMS使用标记清除算法，主要关注系统停顿时间<br>-XX:+UseConcMarkSweepGC    启用CMS垃圾回收器<br>-XX:+ConcGCThreads  设置线程数</li>
+<li>CMS不是独占的回收器，CMS回收过程中，应用程序仍然在不停的工作，又会产生新的垃圾，使用CMS要确保应用程序的内存足够可用，CMS不会等到应用程序饱和的时候才去回收垃圾，而是在某一阈值时开始回收，-XX：CMSInitiatingOccupancyFraction来指定，默认是68，老年代空间使用率达到68的时候，会执行CMS回收，如果内存增长的太快，CMS会出现内存不足的情况，此时CMS会失败，虚拟机将启动老年代串行回收器进行垃圾回收，导致程序中断，直到垃圾回收完成后才会正常运行，GC停顿时间较长。</li>
+<li>标记清除算法存在内存碎片问题<br>CMS有个参数 -XX:UseCmsCompactAtFullCollection 可以使CMS回收之后进行一次碎片整理<br>-XX:CMSFullGCsBeforCompaction 设置进行都少次CMS回收之后，对内存进行一次压缩</li>
+</ul>
+<p>7、G1回收器</p>
+<ul>
+<li><p>G1属于分代垃圾回收器，区分新生代和老年代，依然有eden和from/to区，他不要求整个eden区或者新生代、老年代的空间连续，使用分区算法。<br>并行性：多线程同时执行。<br>并发性：G1拥有与应用程序交替执行的能力部分工作可与应用程序同时进行，在整个GC期间不会完全阻塞应用程序。</p>
+<p>分代GC：G1是一个分代的收集器，兼顾新生代和老年代</p>
+<p>空间整理：G1在垃圾回收过程中，不会像CMS那样在若干次GC之后进行碎片整理，G1采用有效复制对象的方式，减少空间碎片。</p>
+<p>-XX:UseG1GC  应用G1收集器</p>
+<p>-XX:parallelGCThreads 并行回收的线程数</p>
+<p>gc次数少，性能就高一些</p>
+</li>
+</ul>
+<h4 id="八、测试工具"><a href="#八、测试工具" class="headerlink" title="八、测试工具"></a>八、测试工具</h4><p>Apache Jmeter   通过Jmeter对Tomcat增加压力</p>
+<p>观察不同的配置参数对吞吐量的影响（停顿时间，内存的使用情况，回收的效率）</p>
+<p>Jproject</p>
+<h4 id="九、负载均衡"><a href="#九、负载均衡" class="headerlink" title="九、负载均衡"></a>九、负载均衡</h4><ol>
+<li><p>IP级别负载均衡,入口宽一些，LVS更改了底层的IP。</p>
+<p><img src="/images/jvm/IP级别负载均衡.jpg" alt=""></p>
+</li>
+<li><p>反向代理实现负载均衡<br><img src="/images/jvm/反向代理实现负载均衡.jpg" alt=""></p>
+</li>
+</ol>
+<p>备注：集群在故障切换时，连接不是立即被回收，所以要判断  !connection.isOpen()</p>
 
       
 
@@ -268,7 +440,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/11/01/翻墙/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/10/jvm学习整理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,20 +454,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/01/cloudera大数据平台搭建/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/19/error集锦/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          cloudera大数据平台搭建流程
+          error集锦
         
       </div>
     </a>
   
-  
-    <a href="/2018/11/01/hexo-图片加载问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于hexo 图片无法加载的解决办法</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -320,7 +487,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、v2ray-翻墙方法"><span class="toc-number">1.</span> <span class="toc-text">1、v2ray 翻墙方法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、介绍"><span class="toc-number">1.</span> <span class="toc-text">一、介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、Java虚拟机基本结构"><span class="toc-number">2.</span> <span class="toc-text">二、Java虚拟机基本结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、java堆介绍"><span class="toc-number">3.</span> <span class="toc-text">三、java堆介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、java栈介绍"><span class="toc-number">4.</span> <span class="toc-text">四、java栈介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、参数设置"><span class="toc-number">5.</span> <span class="toc-text">五、参数设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#六、垃圾回收"><span class="toc-number">6.</span> <span class="toc-text">六、垃圾回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#七、垃圾回收器"><span class="toc-number">7.</span> <span class="toc-text">七、垃圾回收器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#八、测试工具"><span class="toc-number">8.</span> <span class="toc-text">八、测试工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#九、负载均衡"><span class="toc-number">9.</span> <span class="toc-text">九、负载均衡</span></a></li></ol>
                     </div>
                 </span>
             </div>
