@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | zy8las</title>
+  <title>zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人生没有失败，只是暂时停止成功">
-<meta property="og:type" content="website">
+  <meta name="description" content="java设置模式 一、对象设计六大原则 组合复用原则 多用组合少用继承，找到变化的部分，抽象封装变化的部分，然后把抽象的具体实现带进去。 has  A——组合         is  A——继承  依赖导致原则 依赖：成员变量，方法参数，返回值，依赖抽象不要依赖具体 高层模块不应该依赖低层模块，两者都应该依赖其抽象，抽象不应该依赖具体，具体应该依赖抽象。 针对接口编程，不要针对实现编程 以抽象为基">
+<meta property="og:type" content="article">
 <meta property="og:title" content="zy8las">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/01/设计模式/index.html">
 <meta property="og:site_name" content="zy8las">
-<meta property="og:description" content="人生没有失败，只是暂时停止成功">
+<meta property="og:description" content="java设置模式 一、对象设计六大原则 组合复用原则 多用组合少用继承，找到变化的部分，抽象封装变化的部分，然后把抽象的具体实现带进去。 has  A——组合         is  A——继承  依赖导致原则 依赖：成员变量，方法参数，返回值，依赖抽象不要依赖具体 高层模块不应该依赖低层模块，两者都应该依赖其抽象，抽象不应该依赖具体，具体应该依赖抽象。 针对接口编程，不要针对实现编程 以抽象为基">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-01T03:22:20.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zy8las">
-<meta name="twitter:description" content="人生没有失败，只是暂时停止成功">
+<meta name="twitter:description" content="java设置模式 一、对象设计六大原则 组合复用原则 多用组合少用继承，找到变化的部分，抽象封装变化的部分，然后把抽象的具体实现带进去。 has  A——组合         is  A——继承  依赖导致原则 依赖：成员变量，方法参数，返回值，依赖抽象不要依赖具体 高层模块不应该依赖低层模块，两者都应该依赖其抽象，抽象不应该依赖具体，具体应该依赖抽象。 针对接口编程，不要针对实现编程 以抽象为基">
   
     <link rel="alternative" href="/atom.xml" title="zy8las" type="application/atom+xml">
   
@@ -156,281 +157,230 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-设计模式" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java设置模式</p>
+<h4 id="一、对象设计六大原则"><a href="#一、对象设计六大原则" class="headerlink" title="一、对象设计六大原则"></a>一、对象设计六大原则</h4><ol>
+<li><p>组合复用原则</p>
+<p>多用组合少用继承，找到变化的部分，抽象封装变化的部分，然后把抽象的具体实现带进去。</p>
+<p>has  A——组合         is  A——继承</p>
+</li>
+<li><p>依赖导致原则</p>
+<p>依赖：成员变量，方法参数，返回值，依赖抽象不要依赖具体</p>
+<p>高层模块不应该依赖低层模块，两者都应该依赖其抽象，抽象不应该依赖具体，具体应该依赖抽象。</p>
+<p>针对接口编程，不要针对实现编程</p>
+<p>以抽象为基础搭建的结构比就提类搭建的结构要稳定的多。</p>
+<p>在java中抽象指的是接口或者抽象类，具体就是具体的实现类</p>
+</li>
+<li><p>开放原则</p>
+<p>对扩展开放，对修改关闭，保证稳定性和延续性</p>
+</li>
+<li><p>里氏替换原则</p>
+<p>所有引用基类的地方必须能透明地使用其子类对象</p>
+<p>子类扩展父类功能时。不能破坏父类原有的功能，使用继承时遵循里氏替换原则，子类可以实现父类的抽象方法，但是不能覆盖父类的非抽象方法，当子类重载父类方法时，方法的形参要比父类的方法参数要宽松。</p>
+<p>当子类实现父类的抽象方法时，方法的返回值要比父类更严格。</p>
+<p>里氏替换原则是设计整个集成体系的原则</p>
+</li>
+<li><p>迪米特原则（最小知识原则）</p>
+<p>一个对象应该与其他对象保持更少的了解，至于直接朋友交谈</p>
+<p>成员变量，方法参数，方法返回值中需要的类为直接朋友，类与类之间的关系越密切，了解越多，耦合度就越大，尽量降低类与类之间的耦合。</p>
+<p>接口隔离原则：一个类对另一个类的依赖应该建立在最小的接口上</p>
+</li>
+<li><p>单一职责原则</p>
+<p>类应该只有一个导致类变更的理由，即一个类只负责一项职责。</p>
+<p>降低类的复杂度，提高系统的可维护性，修改时降低风险溢出。</p>
+<h4 id="二、设计模式的分类"><a href="#二、设计模式的分类" class="headerlink" title="二、设计模式的分类"></a>二、设计模式的分类</h4></li>
+<li><p>设计模式介绍<br>模式：在某些场景下，针对某类问题的某种通用解决方案。</p>
+</li>
+<li>创建型模式<br>对象实例化的模式，创建型模式解耦了对象的实例化过程<ul>
+<li>简单工厂：一个工厂类根据传入的参量决定创建出哪一个产品类的实例</li>
+<li>工厂方法：定义一个创建对象的接口，让子类决定实例化哪一个类</li>
+<li>抽象工厂：创建相关依赖对象的家族，而无需明确指定具体的类</li>
+<li>单例模式：某个类只能有一个实例，提高一个全局访问点</li>
+<li>生成器模式：封装一个复杂对象的构建过程，并可以按步骤构造。</li>
+<li>原型模式：通过复制现有的实例来创建新的实例</li>
+</ul>
+</li>
+<li>结构型模式<br>把类和对象结合到一起形成更大的结构<ul>
+<li>适配器模式：将一个类的方法接口转换成客户希望的另一个接口</li>
+<li>组合模式：将对象组合成树形结构，以表示部分—–整体的层次结构。</li>
+<li>装饰者模式：动态地给对象添加新的功能。</li>
+<li>代理模式：为其他对象提供一个代理以控制对这个对象的访问</li>
+<li>蝇量模式：通过共享技术有效地支持大量细粒度的对象</li>
+<li>外观模式：提供统一的方法来访问子系统的一群接口</li>
+<li>桥接模式：将抽象部分与其他的实现部分分离，使他们都可以独立的变化</li>
+</ul>
+</li>
+<li>行为型模式<br>类和对象如何交互，及划分责任和算法<ul>
+<li>模板模式：定义一个算法结构，而将一些步骤延迟到子类中实现。</li>
+<li>解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器。</li>
+<li>策略模式：定义一系列的算法，把他们封装起来，并且使它们可以相互替换</li>
+<li>状态模式：允许一个对象在其内部状态改变时，改变他的行为</li>
+<li>观察者模式：对象间的一对多的依赖关系</li>
+<li>备忘录模式：在不破坏封装性的前提下，保存对象的内部状态</li>
+<li>中介者模式：同一个中介对象封装一系列的对象交互。</li>
+<li>命令模式：将命令请求封装为一个对象，使得可用不同的请求来进行参数化。</li>
+<li>访问者模式：在不改变数据结构的前提下，增加作用于一组对象元素新的功能</li>
+<li>责任链模式：请求的发送者和接收者之间解耦，使得多个对象都有机会处理这个请求</li>
+<li>迭代器模式：一种遍历访问聚合对象中各个元素的方法，不暴露该对象的内部结构</li>
+</ul>
+</li>
+</ol>
+<h4 id="三、用模式思考"><a href="#三、用模式思考" class="headerlink" title="三、用模式思考"></a>三、用模式思考</h4><ol>
+<li>保持简单<br>尽量用最简单的方式解决问题，简单而弹性的设计，一般使用模式是最好的方法。</li>
+<li>设计模式非万能<br>模式是通用问题的经验总结，使用模式的时候要考虑他对其他部分的影响，不需要预留任何弹性的时候，删除掉模式。</li>
+<li>何时需要模式<br>找出设计中会变化的部分，通常就是需要考虑模式的地方</li>
+<li>代码重构<br>重构就是改变代码来改进组织方式的过程，重构的时间就是模式的时间。</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/avatar.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/01/设计模式/" class="archive-article-date">
-  	<time datetime="2019-03-01T03:22:57.645Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/jvm学习整理/" class="archive-article-date">
-  	<time datetime="2019-02-28T09:22:30.857Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/21/墙/" class="archive-article-date">
-  	<time datetime="2018-12-21T06:57:55.973Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/21/墙/">V2Ray快速上手</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/03/01/设计模式/" alt="微信分享二维码">
+    </div>
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/cloudera大数据平台搭建/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:52:12.925Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/28/jvm学习整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、对象设计六大原则"><span class="toc-number">1.</span> <span class="toc-text">一、对象设计六大原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、设计模式的分类"><span class="toc-number">2.</span> <span class="toc-text">二、设计模式的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、用模式思考"><span class="toc-number">3.</span> <span class="toc-text">三、用模式思考</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/cloudera大数据平台搭建/">cloudera大数据平台搭建流程</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/win10安装ubuntu/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:47:10.650Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/error集锦/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:46:41.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/翻墙/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.711Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/翻墙/">翻墙工具</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/hexo-图片加载问题/" class="archive-article-date">
-  	<time datetime="2018-11-01T08:41:36.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/hexo-图片加载问题/">关于hexo 图片无法加载的解决办法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-port">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/20/python总结/" class="archive-article-date">
-  	<time datetime="2018-04-20T13:17:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/20/python总结/">python 总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/hexo个人博客多终端共享/" class="archive-article-date">
-  	<time datetime="2018-04-18T06:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/hexo个人博客多终端共享/">hexo个人博客多终端共享</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -454,8 +404,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
