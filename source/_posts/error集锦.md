@@ -1,3 +1,8 @@
+---
+title: error集锦
+date: 2017-10-19 
+tags:
+---
 error集锦
 
 * err1

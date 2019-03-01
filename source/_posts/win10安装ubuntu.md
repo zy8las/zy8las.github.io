@@ -1,5 +1,7 @@
 ---
-win10 安装ubuntu docker
+title: win10 安装ubuntu docker
+date: 2018-10-19 11:56:22
+tags:
 ---
 
 1.win 10 应用市场 搜索ubuntu
