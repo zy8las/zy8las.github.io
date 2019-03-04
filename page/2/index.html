@@ -158,6 +158,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-设计模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/19/设计模式/">java设置模式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/19/设计模式/" class="archive-article-date">
+  	<time datetime="2017-11-19T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java设置模式</p>
+<h4 id="一、对象设计六大原则"><a href="#一、对象设计六大原则" class="headerlink" title="一、对象设计六大原则"></a>一、对象设计六大原则</h4><ol>
+<li><p>组合复用原则</p>
+<p>多用组合少用继承，找到变化的部分，抽象封装变化的部分，然后把抽象的具体实现带进去。</p>
+<p>has  A——组合         is  A——继承</p>
+</li>
+<li><p>依赖导致原则</p>
+<p>依赖：成员变量，方法参数，返回值，依赖抽象不要依赖具体</p>
+<p>高层模块不应该依赖低层模块，两者都应该依赖其抽象，抽象不应该依赖具体，具体应该依赖抽象。</p>
+<p>针对接口编程，不要针对实现编程</p>
+<p>以抽象为基础搭建的结构比就提类搭建的结构要稳定的多。</p>
+<p>在java中抽象指的是接口或者抽象类，具体就是具体的实现类</p>
+</li>
+<li><p>开放原则</p>
+<p>对扩展开放，对修改关闭，保证稳定性和延续性</p>
+</li>
+<li><p>里氏替换原则</p>
+<p>所有引用基类的地方必须能透明地使用其子类对象</p>
+<p>子类扩展父类功能时。不能破坏父类原有的功能，使用继承时遵循里氏替换原则，子类可以实现父类的抽象方法，但是不能覆盖父类的非抽象方法，当子类重载父类方法时，方法的形参要比父类的方法参数要宽松。</p>
+<p>当子类实现父类的抽象方法时，方法的返回值要比父类更严格。</p>
+<p>里氏替换原则是设计整个集成体系的原则</p>
+</li>
+<li><p>迪米特原则（最小知识原则）</p>
+<p>一个对象应该与其他对象保持更少的了解，至于直接朋友交谈</p>
+<p>成员变量，方法参数，方法返回值中需要的类为直接朋友，类与类之间的关系越密切，了解越多，耦合度就越大，尽量降低类与类之间的耦合。</p>
+<p>接口隔离原则：一个类对另一个类的依赖应该建立在最小的接口上</p>
+</li>
+<li><p>单一职责原则</p>
+<p>类应该只有一个导致类变更的理由，即一个类只负责一项职责。</p>
+<p>降低类的复杂度，提高系统的可维护性，修改时降低风险溢出。</p>
+<h4 id="二、设计模式的分类"><a href="#二、设计模式的分类" class="headerlink" title="二、设计模式的分类"></a>二、设计模式的分类</h4></li>
+<li><p>设计模式介绍<br>模式：在某些场景下，针对某类问题的某种通用解决方案。</p>
+</li>
+<li>创建型模式<br>对象实例化的模式，创建型模式解耦了对象的实例化过程<ul>
+<li>简单工厂：一个工厂类根据传入的参量决定创建出哪一个产品类的实例</li>
+<li>工厂方法：定义一个创建对象的接口，让子类决定实例化哪一个类</li>
+<li>抽象工厂：创建相关依赖对象的家族，而无需明确指定具体的类</li>
+<li>单例模式：某个类只能有一个实例，提高一个全局访问点</li>
+<li>生成器模式：封装一个复杂对象的构建过程，并可以按步骤构造。</li>
+<li>原型模式：通过复制现有的实例来创建新的实例</li>
+</ul>
+</li>
+<li>结构型模式<br>把类和对象结合到一起形成更大的结构<ul>
+<li>适配器模式：将一个类的方法接口转换成客户希望的另一个接口</li>
+<li>组合模式：将对象组合成树形结构，以表示部分—–整体的层次结构。</li>
+<li>装饰者模式：动态地给对象添加新的功能。</li>
+<li>代理模式：为其他对象提供一个代理以控制对这个对象的访问</li>
+<li>蝇量模式：通过共享技术有效地支持大量细粒度的对象</li>
+<li>外观模式：提供统一的方法来访问子系统的一群接口</li>
+<li>桥接模式：将抽象部分与其他的实现部分分离，使他们都可以独立的变化</li>
+</ul>
+</li>
+<li>行为型模式<br>类和对象如何交互，及划分责任和算法<ul>
+<li>模板模式：定义一个算法结构，而将一些步骤延迟到子类中实现。</li>
+<li>解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器。</li>
+<li>策略模式：定义一系列的算法，把他们封装起来，并且使它们可以相互替换</li>
+<li>状态模式：允许一个对象在其内部状态改变时，改变他的行为</li>
+<li>观察者模式：对象间的一对多的依赖关系</li>
+<li>备忘录模式：在不破坏封装性的前提下，保存对象的内部状态</li>
+<li>中介者模式：同一个中介对象封装一系列的对象交互。</li>
+<li>命令模式：将命令请求封装为一个对象，使得可用不同的请求来进行参数化。</li>
+<li>访问者模式：在不改变数据结构的前提下，增加作用于一组对象元素新的功能</li>
+<li>责任链模式：请求的发送者和接收者之间解耦，使得多个对象都有机会处理这个请求</li>
+<li>迭代器模式：一种遍历访问聚合对象中各个元素的方法，不暴露该对象的内部结构</li>
+</ul>
+</li>
+</ol>
+<h4 id="三、用模式思考"><a href="#三、用模式思考" class="headerlink" title="三、用模式思考"></a>三、用模式思考</h4><ol>
+<li>保持简单<br>尽量用最简单的方式解决问题，简单而弹性的设计，一般使用模式是最好的方法。</li>
+<li>设计模式非万能<br>模式是通用问题的经验总结，使用模式的时候要考虑他对其他部分的影响，不需要预留任何弹性的时候，删除掉模式。</li>
+<li>何时需要模式<br>找出设计中会变化的部分，通常就是需要考虑模式的地方</li>
+<li>代码重构<br>重构就是改变代码来改进组织方式的过程，重构的时间就是模式的时间。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/19/设计模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jenkins" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -438,201 +573,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/19/error集锦/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/11/kafka学习/">kafka学习总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/11/kafka学习/" class="archive-article-date">
-  	<time datetime="2017-10-11T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>kafka学习总结</p>
-<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>kafka类似于消息系统的发布订阅数据流，以分布式副本集群的方式存储数据流，实时处理数据，构建实时数据流通道，水平可伸缩，容错，速度快</p>
-<ol>
-<li>MQ：消息队列。</li>
-<li>JMS：java message server java消息服务，消息中间件，主要是解耦作用。</li>
-<li>queue：队列模式</li>
-<li>p2p：点对点模式</li>
-<li>topic：主题模式  publish-subscribe  发布订阅模式</li>
-<li>kafka是主题模式，可以实现队列效果</li>
-</ol>
-<p>特点：</p>
-<ol>
-<li>巨量数据，TB级别</li>
-<li>高吞吐量，支持每秒百万消息</li>
-<li>分布式，支持在多个server之间进行消息分区</li>
-<li>多客户端支持，和多语言进行协调。</li>
-</ol>
-<h4 id="二、安装kafka"><a href="#二、安装kafka" class="headerlink" title="二、安装kafka"></a>二、安装kafka</h4><ol>
-<li><p>下载kafka_2.11-0.10.2.1.tgz</p>
-</li>
-<li><p>解压 tar -zxvf kafka_2.11-0.10.2.1.tgz </p>
-</li>
-<li><p>重命名  mv kafka_2.11-0.10.2.1   kafka</p>
-</li>
-<li><p>体验kafka<br>启动zk：zookeeper-server-start.sh  config/zookeeper.properties &amp;<br>启动kafka服务器：kafka-server-start.sh config/server.properties &amp;<br>创建主题：kafka-topics.sh –create  –zookeeper localhost:2181  –replication-factor 1 –partitions 1 –topic test<br>列出主题：kafka-topics.sh –list –zookeeper localhost:2181<br>发送消息：kafka-console-producer.sh –broker-list localhost:9092  –topic test<br>启动消费者：kafka-console-consumer.sh –zookeeper:2181 –topic test –from-beginning</p>
-</li>
-<li><p>搭建多个broker的kafka集群</p>
-<ul>
-<li>创建多个server配置文件 cp server.properties server-1.properties   server-2.properties<br>broker.id=1<br>listeners=PLAINTEXT://:9093<br>log.dir=/temp/kafka-log</li>
-<li>启动server<br>kafka-server-start.sh server-1.properties &amp;<br>kafka-server-start.sh server-2.properties &amp;</li>
-<li>创建主题：kafka-topics.sh –create  –zookeeper localhost:2181  –replication-factor 3 –partitions 1 –topic test</li>
-<li>查看主题内容：kafka-topics.sh –describe –zookeeper localhost:2181 –topic test</li>
-<li>发送新消息给主题：kafka-console-producer.sh –broker-list localhost:2181 –topic test</li>
-<li>消费消息：kafka-console-consumer.sh –zookeeper:2181 –topic test –from-beginning</li>
-</ul>
-</li>
-<li><p>容错测试</p>
-<ul>
-<li>找到server-1进程  ps -Af |grep server-1</li>
-<li>杀死进程server-1    kill  pid</li>
-<li>查看主题描述：kafka-topics.sh –describe –zookeeper localhost:2181 –topic test</li>
-</ul>
-</li>
-<li><p>kafka组件介绍<br>zk  协同系统<br>broker  代理kafka server，并不维护哪个消费者消费了消息<br>producer  生产者<br>consumer  消费者，维护了消费的消息状态<br>topic  主题<br>consumer group 消费者组，每个组中只有一个消费者可以消费消息<br>每个消费者各成一组就是主题模式，所有消费者在一个组，就是队列模式。</p>
-</li>
-<li><p>kafka核心部分</p>
-<ul>
-<li>消息缓存和filesystem的存储，数据 被立刻写入os内核页</li>
-<li>消息被消费后，kafka长时间驻留消息，如有必要可以重复消费</li>
-<li>可以设置网络过载</li>
-<li>消费者保持消息的元数据</li>
-<li>消费者状态默认在zk中保存，也可以放到其他的oltp中</li>
-<li>kafka的生产和消费是pull-push模式</li>
-<li>kafka没有主从模式，所有的broker地位相同，broker的数据均在zk中维护，并在producer和consumer之间共享</li>
-<li>kafka的负载均衡策略允许producer动态发现broker</li>
-<li>producer维护了broker的连接池</li>
-<li>producer可以选择同步或一部的方式向broker发送消息</li>
-</ul>
-</li>
-<li><p>kafka消息压缩</p>
-<ul>
-<li>producer压缩消息，consumer解压缩消息</li>
-<li>压缩的消息没有深度限制</li>
-<li>在message的header中有一个压缩类型，低两位表示压缩类型，0表说不压缩</li>
-<li>kafka镜像，将源集群数据副本化到target</li>
-</ul>
-</li>
-<li><p>kafka完全分布式集群</p>
-<ul>
-<li><p>使用外部zk集群存放kafka的数据<br>启动s101-s103 的zk zkServer.sh start</p>
-</li>
-<li><p>复制s100上的kafka+profile到s101-s103<br>rsync -vrl kafka  root@s101:/soft/kafka</p>
-</li>
-<li><p>配置文件conf/server.properties<br>broker.id=101<br>log.dirs=XXXX</p>
-<p>zookeeper.connect=s101:2181,s102:2181,s103:2181</p>
-</li>
-<li><p>创建XXXX文件夹 mkdir -p  XXXX</p>
-</li>
-<li><p>启动kafka kafka-server-start.sh   config/server.properties &amp;</p>
-</li>
-</ul>
-</li>
-<li><p>kafka在zk中的znode<br>controller    相当于leader<br>topic  主题<br>admin 删除的主题</p>
-</li>
-<li><p>创建主题<br>kafka-topics.sh –create  –zookeeper s101:2181  –replication-factor 3 –partitions 3 –topic test</p>
-</li>
-<li><p>删除主题<br>删除主题前要先启用主题删除 delete.topic.enable=true<br>kafka-topics.sh –delete –zookeeper s101:2181 –topic test</p>
-</li>
-<li><p>生产者发送消息<br> kafka-console-producer.sh –broker-list s101:2181 –topic test<br>生产者不在zk中注册，消费者在zk中注册，不同的分区都有自己的leader ，文件夹结构：主题+分区号<br>副本数无法修改，只能在创建topic时指定，可以给副本指定不同的broker上去</p>
-</li>
-<li><p>kafka特点<br><img src="/images/kafka/副本.jpg" alt=""><br>kafka的分区相当于hdfs的block块，，每个分区都有3个副本。副本对应broker。<br>重新指派分区：kafka-topics.sh –alter  –zookeeper  s101:2181 –replica-assignment 101:101,102:102,103:103 –topic test</p>
-</li>
-<li><p>kafka 的副本机制<br>每个分区有N的副本，可以承受（N-1）节点故障，每个副本都有自己的leader，其余的都是follow<br>zk中存放分区的leader和all replication信息<br>每个副本存储消息的部分数据在本地log和offset，周期性的同步到磁盘上，确保消息全部写到副本或者其中一个。<br>leader故障时，消息或者写到本地log，或者在producer收到确认消息前，重新发分区给new leader</p>
-</li>
-<li><p>kafka支持的副本模型</p>
-<ul>
-<li>同步复制<br>生产者从zk中找leader，并发送消息，消息立即写到本地log，而且follow开始pull消息，每个follow将消息写到各自的本地log后，向leader发送回执，leader在收到所有的follow确认回执，再向producer发送确认消息</li>
-<li>异步复制<br>leader的本地log写入完成后，即向producer发送确认回执<br>组件<br>broker    ———  zk<br>tpoic       ———  zk<br>producer ——– no zk<br>consumer ——- zk</li>
-</ul>
-</li>
-</ol>
-<h4 id="二、代码演练"><a href="#二、代码演练" class="headerlink" title="二、代码演练"></a>二、代码演练</h4><ol>
-<li><p>编写生产者oldAPI</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaOldProducer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Producer&lt;Integer, String&gt; producer;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        props.put(<span class="string">"metadata.broker.list"</span>, <span class="string">"s101:9092"</span>);</span><br><span class="line">        props.put(<span class="string">"serialize.class"</span>, <span class="string">"kafka.serialzer.StringEncoder"</span>);</span><br><span class="line">        props.put(<span class="string">"request.requisred.acks"</span>, <span class="string">"1"</span>);</span><br><span class="line">        producer = <span class="keyword">new</span> Producer&lt;Integer, String&gt;(<span class="keyword">new</span> ProducerConfig(props));</span><br><span class="line">        KeyedMessage&lt;Integer, String&gt; msg = <span class="keyword">new</span> KeyedMessage&lt;Integer, String&gt;(<span class="string">"test"</span>, <span class="string">"hello"</span>);</span><br><span class="line">        producer.send(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写生产者 new API</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.KafkaProducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.Producer;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.ProducerRecord;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaNewProducer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"192.168.1.171:9092"</span>);</span><br><span class="line">        props.put(<span class="string">"acks"</span>, <span class="string">"all"</span>);</span><br><span class="line">        props.put(<span class="string">"retries"</span>, <span class="number">0</span>);</span><br><span class="line">        props.put(<span class="string">"batch.size"</span>, <span class="number">16384</span>);</span><br><span class="line">        props.put(<span class="string">"linger.ms"</span>, <span class="number">1</span>);</span><br><span class="line">        props.put(<span class="string">"buffer.memory"</span>, <span class="number">33554432</span>);</span><br><span class="line">        props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        <span class="comment">// props.put("partitioner.class","com.yu.kafka.KafkaPartitioner");</span></span><br><span class="line">        Producer&lt;String, String&gt; producer = <span class="keyword">new</span> KafkaProducer&lt;String, String&gt;(props);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            producer.send(<span class="keyword">new</span> ProducerRecord&lt;String, String&gt;(<span class="string">"mytopic"</span>, Integer.toString(i), Integer.toString(i)));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        producer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>kafkaProducer发送消息分析<br>生产者是线程安全的，维护了本地线程池，send方法时异步的，ack=all导致记录完全提交时阻塞</p>
-</li>
-<li><p>自定义分区函数</p>
-<ul>
-<li><p>使用带有分区函数的生产者发送消息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaPartitioner</span> <span class="keyword">implements</span> <span class="title">Partitioner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KafkaPartitioner</span><span class="params">(VerifiableProperties p)</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(String topic, Object key, <span class="keyword">byte</span>[] keyBytes, Object value, <span class="keyword">byte</span>[] valueBytes, Cluster cluster)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Map&lt;String, ?&gt; configs)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在生产者函数中指定分区函数<code>props.put(&quot;partitioner.class&quot;,&quot;com.yu.kafka.KafkaPartitioner&quot;);</code></p>
-</li>
-</ul>
-</li>
-<li><p>编写消费者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kafka.consumer.Consumer;</span><br><span class="line"><span class="keyword">import</span> kafka.consumer.ConsumerConfig;</span><br><span class="line"><span class="keyword">import</span> kafka.consumer.ConsumerIterator;</span><br><span class="line"><span class="keyword">import</span> kafka.consumer.KafkaStream;</span><br><span class="line"><span class="keyword">import</span> kafka.javaapi.consumer.ConsumerConnector;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaNewConsumer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建属性并添加</span></span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        props.put(<span class="string">"zookeeper.connect"</span>, <span class="string">"s101:2181"</span>);</span><br><span class="line">        props.put(<span class="string">"group.id"</span>, <span class="string">"g1"</span>);</span><br><span class="line">        props.put(<span class="string">"zookeeper.session.timeout.ms"</span>, <span class="string">"500"</span>);</span><br><span class="line">        props.put(<span class="string">"zookeeper.sync.time.ms"</span>, <span class="string">"250"</span>);</span><br><span class="line">        props.put(<span class="string">"suto.commit.interval.ms"</span>, <span class="string">"1000"</span>);</span><br><span class="line">        <span class="comment">//创建消费者配置对象</span></span><br><span class="line">        ConsumerConfig config = <span class="keyword">new</span> ConsumerConfig(props);</span><br><span class="line"><span class="comment">//        创建连接器</span></span><br><span class="line">        ConsumerConnector conn = Consumer.createJavaConsumerConnector(config);</span><br><span class="line">        <span class="comment">//创建主题map</span></span><br><span class="line">        Map&lt;String, Integer&gt; topicMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        topicMap.put(<span class="string">"test"</span>, <span class="number">1</span>);</span><br><span class="line">        Map&lt;String, List&lt;KafkaStream&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt;&gt;&gt; map = conn.createMessageStreams(topicMap);</span><br><span class="line">        List&lt;KafkaStream&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt;&gt; list = map.get(<span class="string">"test"</span>);</span><br><span class="line">        <span class="keyword">for</span> (KafkaStream&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt; s : list) &#123;</span><br><span class="line">            ConsumerIterator&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt; it = s.iterator();</span><br><span class="line">            <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">                String msg = <span class="keyword">new</span> String(it.next().message());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        conn.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>消费介绍<br>修改/consumers/g1/offsets/test3/(0,1,2) 里面的值就可以从头开始消费，以上内容在zk中<br>从哪里开始消费取决于偏移量，偏移量存在zk中<br>消费者消费的偏移量记载的是消费者组消费的该分区的消息的数量，你消费一次则zk中存储的值就会变化一次<br>将消息分到不同的主题上，每个主题对应一种类型的数据（mysql，hdfs，xml）等</p>
-</li>
-<li><p>kafka作为flume的sink<br>a1.Channels.c1.parseAsFlumeEvent=false  必须要添加，其他的配置看官网。</p>
-</li>
-<li><p>kafka其他指令</p>
-<ul>
-<li>关闭kafka  kafka-server-stop.sh</li>
-<li>查看主题偏移量  kafka-consumer-offset-checker.sh  –zookeeper s101:2181 –group g1 –topic test;</li>
-</ul>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/11/kafka学习/">展开全文 >></a>
         </p>
       
 
