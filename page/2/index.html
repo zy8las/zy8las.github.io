@@ -158,6 +158,218 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-设计模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/19/设计模式/">java设置模式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/19/设计模式/" class="archive-article-date">
+  	<time datetime="2017-11-19T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java设置模式</p>
+<h4 id="一、对象设计六大原则"><a href="#一、对象设计六大原则" class="headerlink" title="一、对象设计六大原则"></a>一、对象设计六大原则</h4><ol>
+<li><p>组合复用原则</p>
+<p>多用组合少用继承，找到变化的部分，抽象封装变化的部分，然后把抽象的具体实现带进去。</p>
+<p>has  A——组合         is  A——继承</p>
+</li>
+<li><p>依赖导致原则</p>
+<p>依赖：成员变量，方法参数，返回值，依赖抽象不要依赖具体</p>
+<p>高层模块不应该依赖低层模块，两者都应该依赖其抽象，抽象不应该依赖具体，具体应该依赖抽象。</p>
+<p>针对接口编程，不要针对实现编程</p>
+<p>以抽象为基础搭建的结构比就提类搭建的结构要稳定的多。</p>
+<p>在java中抽象指的是接口或者抽象类，具体就是具体的实现类</p>
+</li>
+<li><p>开放原则</p>
+<p>对扩展开放，对修改关闭，保证稳定性和延续性</p>
+</li>
+<li><p>里氏替换原则</p>
+<p>所有引用基类的地方必须能透明地使用其子类对象</p>
+<p>子类扩展父类功能时。不能破坏父类原有的功能，使用继承时遵循里氏替换原则，子类可以实现父类的抽象方法，但是不能覆盖父类的非抽象方法，当子类重载父类方法时，方法的形参要比父类的方法参数要宽松。</p>
+<p>当子类实现父类的抽象方法时，方法的返回值要比父类更严格。</p>
+<p>里氏替换原则是设计整个集成体系的原则</p>
+</li>
+<li><p>迪米特原则（最小知识原则）</p>
+<p>一个对象应该与其他对象保持更少的了解，至于直接朋友交谈</p>
+<p>成员变量，方法参数，方法返回值中需要的类为直接朋友，类与类之间的关系越密切，了解越多，耦合度就越大，尽量降低类与类之间的耦合。</p>
+<p>接口隔离原则：一个类对另一个类的依赖应该建立在最小的接口上</p>
+</li>
+<li><p>单一职责原则</p>
+<p>类应该只有一个导致类变更的理由，即一个类只负责一项职责。</p>
+<p>降低类的复杂度，提高系统的可维护性，修改时降低风险溢出。</p>
+<h4 id="二、设计模式的分类"><a href="#二、设计模式的分类" class="headerlink" title="二、设计模式的分类"></a>二、设计模式的分类</h4></li>
+<li><p>设计模式介绍<br>模式：在某些场景下，针对某类问题的某种通用解决方案。</p>
+</li>
+<li>创建型模式<br>对象实例化的模式，创建型模式解耦了对象的实例化过程<ul>
+<li>简单工厂：一个工厂类根据传入的参量决定创建出哪一个产品类的实例</li>
+<li>工厂方法：定义一个创建对象的接口，让子类决定实例化哪一个类</li>
+<li>抽象工厂：创建相关依赖对象的家族，而无需明确指定具体的类</li>
+<li>单例模式：某个类只能有一个实例，提高一个全局访问点</li>
+<li>生成器模式：封装一个复杂对象的构建过程，并可以按步骤构造。</li>
+<li>原型模式：通过复制现有的实例来创建新的实例</li>
+</ul>
+</li>
+<li>结构型模式<br>把类和对象结合到一起形成更大的结构<ul>
+<li>适配器模式：将一个类的方法接口转换成客户希望的另一个接口</li>
+<li>组合模式：将对象组合成树形结构，以表示部分—–整体的层次结构。</li>
+<li>装饰者模式：动态地给对象添加新的功能。</li>
+<li>代理模式：为其他对象提供一个代理以控制对这个对象的访问</li>
+<li>蝇量模式：通过共享技术有效地支持大量细粒度的对象</li>
+<li>外观模式：提供统一的方法来访问子系统的一群接口</li>
+<li>桥接模式：将抽象部分与其他的实现部分分离，使他们都可以独立的变化</li>
+</ul>
+</li>
+<li>行为型模式<br>类和对象如何交互，及划分责任和算法<ul>
+<li>模板模式：定义一个算法结构，而将一些步骤延迟到子类中实现。</li>
+<li>解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器。</li>
+<li>策略模式：定义一系列的算法，把他们封装起来，并且使它们可以相互替换</li>
+<li>状态模式：允许一个对象在其内部状态改变时，改变他的行为</li>
+<li>观察者模式：对象间的一对多的依赖关系</li>
+<li>备忘录模式：在不破坏封装性的前提下，保存对象的内部状态</li>
+<li>中介者模式：同一个中介对象封装一系列的对象交互。</li>
+<li>命令模式：将命令请求封装为一个对象，使得可用不同的请求来进行参数化。</li>
+<li>访问者模式：在不改变数据结构的前提下，增加作用于一组对象元素新的功能</li>
+<li>责任链模式：请求的发送者和接收者之间解耦，使得多个对象都有机会处理这个请求</li>
+<li>迭代器模式：一种遍历访问聚合对象中各个元素的方法，不暴露该对象的内部结构</li>
+</ul>
+</li>
+</ol>
+<h4 id="三、用模式思考"><a href="#三、用模式思考" class="headerlink" title="三、用模式思考"></a>三、用模式思考</h4><ol>
+<li>保持简单<br>尽量用最简单的方式解决问题，简单而弹性的设计，一般使用模式是最好的方法。</li>
+<li>设计模式非万能<br>模式是通用问题的经验总结，使用模式的时候要考虑他对其他部分的影响，不需要预留任何弹性的时候，删除掉模式。</li>
+<li>何时需要模式<br>找出设计中会变化的部分，通常就是需要考虑模式的地方</li>
+<li>代码重构<br>重构就是改变代码来改进组织方式的过程，重构的时间就是模式的时间。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/19/设计模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-jenkins" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/jenkins/">jenkins安装详解windows 7</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/jenkins/" class="archive-article-date">
+  	<time datetime="2017-10-19T08:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、修改默认的jenkins安装路径"><a href="#一、修改默认的jenkins安装路径" class="headerlink" title="一、修改默认的jenkins安装路径"></a>一、修改默认的jenkins安装路径</h1><p>因为jenkins默认安装在c盘 C:\Users\Administrator.jenkins下，那怎样将安装路径修改至e盘呢？</p>
+<p>新建一个系统变量：JENKINS_HOME，值为E:\jenkins\jenkinspro，或者其他目录。再将此路径添加至Path里。<br><img src="/images/jenkins/huanjing.jpg" alt="huanjing"></p>
+<h1 id="二、安装jenkins"><a href="#二、安装jenkins" class="headerlink" title="二、安装jenkins"></a>二、安装jenkins</h1><ul>
+<li>2.1、下载jenkins<br>首先到Jenkins官网下载windows安装包。在主页的右侧版本下载框里选择Windows，下载zip文件。<br><a href="https://jenkins.io/" target="_blank" rel="noopener">官网</a></li>
+<li>2.2、解压运行，一路下一步(运行前先关闭8080端口，否则可能安装不成功，关闭方式查看温馨提示)</li>
+<li>2.3、安装完成后，安装程序会自动打开默认浏览器，打开Jenkins主页。</li>
+<li>2.4、jenkins安装完成<br><img src="/images/jenkins/jenkins.jpg" alt="jenkins"><h1 id="三、修改jenkins默认端口"><a href="#三、修改jenkins默认端口" class="headerlink" title="三、修改jenkins默认端口"></a>三、修改jenkins默认端口</h1>可能有一些原因，8080端口被占用了，无法使用时需要修改jenkins的启动端口号。<br>如果首次安装，建议先停止原有系统的8080端口占用，等jenkins安装完成后，再进行修改，然后该回8080的原系统端口。</li>
+<li>3.1、先停止jenkins服务<br>win+r-》cmd-》net stop jenkins</li>
+<li><p>3.2、打开E:\jenkins\Jenkins\jenkins.xml<br>将<arguments>元素中的httpPort的值8080改为其他值即可</arguments></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;arguments&gt;-Xrs -Xmx256m -Dhudson.lifecycle=hudson.lifecycle.WindowsServiceLifecycle -jar &quot;%BASE%\jenkins.war&quot; --httpPort=8099&lt;/arguments&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.3、重启jenkins服务<br>win+r-》cmd-》net start jenkins</p>
+</li>
+</ul>
+<h1 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h1><p>查看网络端口pid<br>win+r-》cmd-》netstat -ano|findstr 8080<br>停止响应pid端口<br>win+r-》cmd-》taskkill /pid pid号 /f</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/jenkins/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-github-hexo搭建个人博客" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
