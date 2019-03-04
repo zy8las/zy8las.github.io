@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b5267a-d042-4219-81c6-4fd1a1074b19" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/_posts/kafka学习.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/kafka学习.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/sqoop学习.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/sqoop学习.md" afterDir="false" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,22 +30,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="md" value="23" />
+          <entry key="md" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Markdown" value="23" />
+          <entry key="Markdown" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="md" value="51" />
+          <entry key="md" value="62" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Markdown" value="51" />
+          <entry key="Markdown" value="62" />
         </counts>
       </usages-collector>
     </session>
@@ -64,24 +64,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_posts/sqoop学习.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="92">
-                <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+              <first_editor relative-caret-position="-460">
+                <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/_posts/kafka学习.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="46">
-                <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+              <first_editor relative-caret-position="69">
+                <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
                 <folding>
                   <element signature="imports" expanded="true" />
                   <element signature="imports" expanded="true" />
@@ -154,8 +154,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/jenkins.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="230">
-                <caret line="10" column="20" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="20" />
+              <first_editor>
+                <caret selection-end-line="4" selection-end-column="3" />
               </first_editor>
               <second_editor />
             </state>
@@ -203,8 +203,8 @@
         <option value="$PROJECT_DIR$/source/_posts/jvm学习整理.md" />
         <option value="$PROJECT_DIR$/source/_posts/win10安装ubuntu.md" />
         <option value="$PROJECT_DIR$/source/_posts/设计模式.md" />
-        <option value="$PROJECT_DIR$/source/_posts/kafka学习.md" />
         <option value="$PROJECT_DIR$/source/_posts/sqoop学习.md" />
+        <option value="$PROJECT_DIR$/source/_posts/kafka学习.md" />
       </list>
     </option>
   </component>
@@ -241,10 +241,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2" />
-    <option name="y" value="116" />
-    <option name="width" value="1920" />
-    <option name="height" value="1030" />
+    <option name="x" value="7" />
+    <option name="y" value="57" />
+    <option name="width" value="1536" />
+    <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -302,8 +302,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\blog\source\images" />
       <recent name="D:\blog\source\_posts" />
+      <recent name="D:\blog\source\images" />
       <recent name="E:\blog\source\images\hexoshare" />
       <recent name="E:\blog\public\images\hexoshare" />
       <recent name="E:\blog\source\images\SwitchyOmega" />
@@ -750,12 +750,12 @@
       <workItem from="1545375404875" duration="660000" />
       <workItem from="1551345714110" duration="291000" />
       <workItem from="1551410554954" duration="1143000" />
-      <workItem from="1551664723476" duration="843000" />
+      <workItem from="1551664723476" duration="1674000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55997000" />
+    <option name="totallyTimeSpent" value="56828000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -940,16 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/jenkins.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="230">
-            <caret line="10" column="20" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="20" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/github-hexo搭建个人博客.md">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -975,20 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/kafka学习.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="46">
-            <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-            <folding>
-              <element signature="imports" expanded="true" />
-              <element signature="imports" expanded="true" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/jvm学习整理.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1002,8 +978,32 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/sqoop学习.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="92">
-            <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <first_editor relative-caret-position="-460">
+            <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/jenkins.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret selection-end-line="4" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/kafka学习.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="69">
+            <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            <folding>
+              <element signature="imports" expanded="true" />
+              <element signature="imports" expanded="true" />
+            </folding>
           </first_editor>
           <second_editor />
         </state>

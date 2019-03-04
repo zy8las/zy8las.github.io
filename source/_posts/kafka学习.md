@@ -1,6 +1,6 @@
 ---
 title: kafka学习总结
-date: 2017-10-11 11:56:22
+date: 2017-11-19 16:25:23
 tags:
 ---
 kafka学习总结
@@ -151,6 +151,12 @@ kafka类似于消息系统的发布订阅数据流，以分布式副本集群的
 1. 编写生产者oldAPI
 
    ```java
+   import kafka.javaapi.producer.Producer;
+   import kafka.producer.KeyedMessage;
+   import kafka.producer.ProducerConfig;
+   
+   import java.util.Properties;
+   
    public class KafkaOldProducer {
        private static Producer<Integer, String> producer;
        private static final Properties props = new Properties();
