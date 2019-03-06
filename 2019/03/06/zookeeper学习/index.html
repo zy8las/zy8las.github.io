@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | zy8las</title>
+  <title>zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人生没有失败，只是暂时停止成功">
-<meta property="og:type" content="website">
+  <meta name="description" content="zookeeper学习总结 一、介绍轻量级集群框架，协同服务，保证高可靠、高可用，集中式服务，用于配置信息，名称服务，分布式同步处理树形层次结构，znode，动物管理员 二、zk组件 client向server周期性的发送消息，表明自己还活着，server向client回应确认消息，client没有收到回应，自动重定向消息到其他server server一个zk节点，向client提供所有服务，通">
+<meta property="og:type" content="article">
 <meta property="og:title" content="zy8las">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/zookeeper学习/index.html">
 <meta property="og:site_name" content="zy8las">
-<meta property="og:description" content="人生没有失败，只是暂时停止成功">
+<meta property="og:description" content="zookeeper学习总结 一、介绍轻量级集群框架，协同服务，保证高可靠、高可用，集中式服务，用于配置信息，名称服务，分布式同步处理树形层次结构，znode，动物管理员 二、zk组件 client向server周期性的发送消息，表明自己还活着，server向client回应确认消息，client没有收到回应，自动重定向消息到其他server server一个zk节点，向client提供所有服务，通">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-06T05:44:44.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zy8las">
-<meta name="twitter:description" content="人生没有失败，只是暂时停止成功">
+<meta name="twitter:description" content="zookeeper学习总结 一、介绍轻量级集群框架，协同服务，保证高可靠、高可用，集中式服务，用于配置信息，名称服务，分布式同步处理树形层次结构，znode，动物管理员 二、zk组件 client向server周期性的发送消息，表明自己还活着，server向client回应确认消息，client没有收到回应，自动重定向消息到其他server server一个zk节点，向client提供所有服务，通">
   
     <link rel="alternative" href="/atom.xml" title="zy8las" type="application/atom+xml">
   
@@ -156,241 +157,247 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-zookeeper学习" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>zookeeper学习总结</p>
+<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>轻量级集群框架，协同服务，保证高可靠、高可用，集中式服务，用于配置信息，名称服务，分布式同步处理树形层次结构，znode，动物管理员</p>
+<h4 id="二、zk组件"><a href="#二、zk组件" class="headerlink" title="二、zk组件"></a>二、zk组件</h4><ol>
+<li>client<br>向server周期性的发送消息，表明自己还活着，server向client回应确认消息，client没有收到回应，自动重定向消息到其他server</li>
+<li>server<br>一个zk节点，向client提供所有服务，通知client ，server是活着的</li>
+<li>ensemble<br>一组zk节点，需要最小值3</li>
+<li>leader<br>特殊的zk节点，zk集群启动时，推选leader，leader在follower故障时进行处理，有一半坏掉了，集群就挂了</li>
+<li>follower（随从）<br>听命于leader</li>
+<li>zk的namespace的等级结构<ul>
+<li>驻留在内存中</li>
+<li>树上的每一个节点都是znode。</li>
+<li>每个znode都有name，而且用/分隔</li>
+<li>每个znode存放的数据不能超过1m</li>
+<li>每个节点都有stat对象<br>version 与之关联的数据发生改变时，版本增加<br>acl：权限<br>timestamp：时间戳<br>datalength：长度</li>
+</ul>
+</li>
+<li>zk的znode节点类型<ul>
+<li>持久节点</li>
+<li>临时节点</li>
+<li>序列节点</li>
+</ul>
+</li>
+</ol>
+<h4 id="三、zk安装"><a href="#三、zk安装" class="headerlink" title="三、zk安装"></a>三、zk安装</h4><ol>
+<li><p>下载<br>zookeeper-3.4.10.tar.gz</p>
+</li>
+<li><p>安装jdk</p>
+</li>
+<li><p>配置环境变量 profile</p>
+</li>
+<li><p>配置zk</p>
+<ul>
+<li>考察文件/conf/zoo_sample.conf<br>tickTime=2000   每次心跳的毫秒数<br>initLimit=10 开始同步阶段的心跳数<br>synclimit=5 发送请求和得到确定之间可以传递的心跳数<br>dataDir=/tmp/zookeeper 存放zk的快照目录<br>clientport=2181  客户端连接的端口<br>maxclientcnxns=60 客户端最大连接数<br>autopurge.snapretainCoun=3在dataDir保留的快照数<br>autopurge.purgeInterval=1  丢弃任务的间隔时间</li>
+</ul>
+</li>
+<li><p>部署zk</p>
+<ol>
+<li><p>单机版</p>
+<ul>
+<li>创建配置/conf/zoo.cfg<br>tickTime=2000<br>dataDir=/home/root/zk/data<br>clientPort=2181<br>initLimit=5<br>synclimit=2</li>
+<li>启动zkserver<br>zkServer.sh start</li>
+<li>启动zkClient<br>zkCli.sh start</li>
+</ul>
+</li>
+<li><p>zk完全分布式</p>
+<ul>
+<li><p>确定主机<br>a101,s102,s103</p>
+</li>
+<li><p>配置myid<br>dataDir目录。/home/root/zk/myid,每台myid不一样，101机器的是101,102机器的是102</p>
+</li>
+<li><p>配置zoo.cfg<br>tickTime=2000<br>dataDir=/home/root/zk/data<br>clientPort=2181<br>initLimit=5<br>synclimit=2<br>server.101=s101:2888:3888<br>server.102=s102:2888:3888<br>server.103=s103:2888:3888</p>
+</li>
+<li><p>每台机器上单独启动<br>zkServer.sh start<br>zkServer.sh stop</p>
+<p>zkServer.sh status  查看节点状态</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="四、使用"><a href="#四、使用" class="headerlink" title="四、使用"></a>四、使用</h4><ol>
+<li><p>客户端连接服务器<br>zkCli.sh -server s101:2181<br>ls /  查看结构<br>get /文件  查看数据<br>create /文件名  “内容”   创建节点<br>set /文件名  “文件内容”  修改内容<br>dataversion 数据版本<br>set /文件名  “内容”  版本号<br>delete /目录   删除节点，该节点下不能有内容<br>rmr /目录  递归删除</p>
+</li>
+<li><p>通过zk的api访问zk集群</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.zookeeper.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.zookeeper.data.ACL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnZookeeper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String conn = <span class="string">"s101:2181,s102:2181,s103:2181"</span>;</span><br><span class="line">        ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(conn, <span class="number">5000</span>, <span class="keyword">new</span> Watcher() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(WatchedEvent watchedEvent)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//创建权限列表</span></span><br><span class="line">        ACL acl = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, ZooDefs.Ids.ANYONE_ID_UNSAFE);</span><br><span class="line">        List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        acls.add(acl);</span><br><span class="line">        zk.create(<span class="string">"/root"</span>, <span class="string">"helloworld"</span>.getBytes(), acls, CreateMode.PERSISTENT);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改znode</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zk.setData(<span class="string">"/root"</span>,<span class="string">"hi"</span>.getBytes(),<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>读取数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.zookeeper.WatchedEvent;</span><br><span class="line"><span class="keyword">import</span> org.apache.zookeeper.Watcher;</span><br><span class="line"><span class="keyword">import</span> org.apache.zookeeper.ZooDefs;</span><br><span class="line"><span class="keyword">import</span> org.apache.zookeeper.ZooKeeper;</span><br><span class="line"><span class="keyword">import</span> org.apache.zookeeper.data.ACL;</span><br><span class="line"><span class="keyword">import</span> org.apache.zookeeper.data.Stat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetZKData</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String conn = <span class="string">"s101:2181,s102:2181,s103:2181"</span>;</span><br><span class="line">        ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(conn, <span class="number">5000</span>, <span class="keyword">new</span> Watcher() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(WatchedEvent watchedEvent)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//创建权限列表</span></span><br><span class="line">        ACL acl = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, ZooDefs.Ids.ANYONE_ID_UNSAFE);</span><br><span class="line">        List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        acls.add(acl);</span><br><span class="line">        <span class="comment">//创建状态对象，在getDate时候，接收节点的状态信息</span></span><br><span class="line">        Stat s = <span class="keyword">new</span> Stat();</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = zk.getData(<span class="string">"/root"</span>, <span class="keyword">null</span>, s);</span><br><span class="line">        System.out.println(bytes);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建临时节点,程序运行结束就消失</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zk.create(<span class="string">"/root"</span>, <span class="string">"helloworld"</span>.getBytes(), acls, CreateMode.EPHEMERAL);</span><br></pre></td></tr></table></figure>
+<p>创建序列节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zk.create(<span class="string">"/root"</span>, <span class="string">"helloworld"</span>.getBytes(), acls, CreateMode.PERSISTENT_SEQUENTIAL);</span><br></pre></td></tr></table></figure>
+<p>得到孩子节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list=zk.getChildren(<span class="string">"/"</span>,<span class="keyword">null</span>);</span><br><span class="line"><span class="keyword">for</span>(String s:list)&#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>删除节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zk.delete(<span class="string">"/root"</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>创建节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zk.create(<span class="string">"/root"</span>,<span class="string">"hello"</span>.getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="五、leader推选过程"><a href="#五、leader推选过程" class="headerlink" title="五、leader推选过程"></a>五、leader推选过程</h4><ol>
+<li>所有节点在相同的路径下创建各自的临时序列化节点，每个节点都有自己对应的znode。</li>
+<li>拥有最小编号的zk是leader其他的zk为follower。</li>
+<li>每个follower观察紧比自己小的那个node</li>
+<li>如果leader下线，则它对应的节点就会删除</li>
+<li>观察者会发现leader被删除</li>
+<li>观察者查找是否还有最下的节点，如果有，最小值节点成为leader，否则观察者为leader</li>
+</ol>
+<p>自动容灾一般要用zk</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/avatar.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/15/flume学习/" class="archive-article-date">
-  	<time datetime="2017-12-15T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/15/flume学习/">flume学习整理</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/03/06/zookeeper学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/10/sqoop学习/" class="archive-article-date">
-  	<time datetime="2017-12-10T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/21/墙/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">V2Ray快速上手</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/10/sqoop学习/">sqoop学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、介绍"><span class="toc-number">1.</span> <span class="toc-text">一、介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、zk组件"><span class="toc-number">2.</span> <span class="toc-text">二、zk组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、zk安装"><span class="toc-number">3.</span> <span class="toc-text">三、zk安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、使用"><span class="toc-number">4.</span> <span class="toc-text">四、使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、leader推选过程"><span class="toc-number">5.</span> <span class="toc-text">五、leader推选过程</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/19/kafka学习/" class="archive-article-date">
-  	<time datetime="2017-11-19T08:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/19/kafka学习/">kafka学习总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/19/设计模式/" class="archive-article-date">
-  	<time datetime="2017-11-19T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/19/设计模式/">java设置模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/jenkins/" class="archive-article-date">
-  	<time datetime="2017-10-19T08:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/jenkins/">jenkins安装详解windows 7</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/github-hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2017-10-19T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/github-hexo搭建个人博客/">使用github+hexo搭建个人免费博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/19/error集锦/" class="archive-article-date">
-  	<time datetime="2017-10-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/19/error集锦/">error集锦</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/10/jvm学习整理/" class="archive-article-date">
-  	<time datetime="2017-10-10T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/10/jvm学习整理/">jvm虚拟机</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -414,8 +421,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
