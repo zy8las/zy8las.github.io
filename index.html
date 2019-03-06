@@ -241,6 +241,136 @@
 
 
   
+    <article id="post-docket" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/19/docket/">docker学习整理</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/19/docket/" class="archive-article-date">
+  	<time datetime="2018-12-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>docker学习整理</p>
+<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>云计算，类似于VM</p>
+<p>docker 平台，管理部署应用程序，开发容纳，运行应用程序的平台。在容器中安全的运行应用程序。</p>
+<p>docker引擎，cs结构的程序，server长时间运行的守护进程，cli客户端命令</p>
+<p>docker对象，同时运行多个虚拟机</p>
+<p>image 镜像</p>
+<p>containers  容器，进程</p>
+<p>network 网络</p>
+<p>data values 数据卷</p>
+<p>docker daemon 守护进程，docker的守护进程，运行在host之上，不需要直接交互，通过cli访问。</p>
+<p>docker client 接收用户指令，并和docker守护进程通信</p>
+<p>docker image docker镜像，只读模板</p>
+<p>docker registries  注册表，包含镜像库</p>
+<p>docker container docker容器，通过镜像创建容器，每个容器是独立的，安全的运行平台，容器中运行的是docker的组件。</p>
+<h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><p>参考官网 </p>
+<h4 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h4><ol>
+<li>启动/停止<br>service docker start/stop</li>
+<li>验证docker是否启动成功<br>docker run hello-world</li>
+<li>查看docker版本<br>docker version</li>
+<li>查看帮助<br>docker –help   / docker run –help    </li>
+<li>配置开机自启动<br>systemctl enable docker</li>
+<li>查看运行的容器<br>docker ps -a<br>docker  告知os使用docker指令<br>run 子命令创建运行容器<br>hello-world  加载的镜像</li>
+<li>注册docker用户<br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></li>
+<li>查看本地镜像<br>docker images</li>
+<li>构建镜像<ul>
+<li>创建文件<br>touch Dockerfile</li>
+<li>编辑文件<br>FROM docker/whalesay:latest<br>RUN apt-get -y update &amp;&amp; apt-get install  -y fortunes<br>CMD /usr/games/fortune -a |cowsay</li>
+<li>从dockerfile构建镜像文件<br>docker build -t docker-whale . </li>
+</ul>
+</li>
+<li>找到镜像ID<br>Image id</li>
+<li>使用docker login远程登录到docker hub<br>docker login –username=用户名  –email=邮箱</li>
+<li>标记镜像<br>docker tag 镜像id  用户名/hello-world：latest</li>
+<li>使用push命令上传镜像<br>docker push 用户名/hello-world</li>
+<li>删除本地镜像文件<br>docker rmi  -f 镜像id</li>
+<li>使用docker run下载镜像并使用<br>docker run 用户名/hello-world</li>
+<li>运行容器<br>docker run ubuntu /bin/each “hello world”<br>运行交互式容器<br>-t  伪字符终端<br>-i  交互式</li>
+<li>进入容器中可以使用正常的shell指令，exit /ctrl +D 退出交互式</li>
+<li>创建容器以守护进程的方式运行<br>-d 以守护进程的方式</li>
+<li>查看容器的log<br>docker log  容器id</li>
+<li>停止容器<br>docker stop 容器id</li>
+<li>删除容器<br>docker rm 容器id</li>
+<li>删除多个容器<br>docker rm id1 id2</li>
+<li>查看容器<br>docker ps -a</li>
+<li>停止容器<br>docker stop 容器id</li>
+<li>运行容器，使用training/ webapp<br>-d 后台方式<br>-p(小p)映射指定端口<br>-P（大P）映射所有暴露的端口<br>docker run -d -P training/webapp  python app.py<br>docker run -d -p 80:5000 training/webapp  python app.py<br>打开浏览器使用host主机映射的端口，访问虚拟机的客户机web服务器</li>
+<li>查看容器的IP地址<br>docker-machine id 容器id</li>
+<li>查看port子命令<br>docker port –help</li>
+<li>查看容器中指定的端口在宿主机上的映射端口<br>docker port 容器id 5000</li>
+<li>查看web程序的log<br>docker logs -f 容器名称</li>
+<li>查看容器的进程<br>docker top 容器名称/容器id</li>
+<li>检查容器<br>docker inspect 容器名称</li>
+<li>查看容器列表<br>docker ps -l</li>
+<li>删除容器<br>docker rm -f 容器id    （-f强制删除）</li>
+<li>删除镜像<br>docker rmi -f 镜像id  （-f强制删除）</li>
+<li>通过标记运行容器<br>docker run -i -t ubuntu:14.04 /bin/bash 如果只指定ubuntu，则默认使用latest版本</li>
+<li>下载镜像<br>docker pull 镜像名称</li>
+<li>搜索镜像<br>docker search 镜像名称</li>
+<li>提交变化给镜像<br>docker commit -m “说明文字” -a “作者名称” 容器id ubuntu:V2<br>本地产生新的镜像，提交就是写入，保持变化的部分，产生新的镜像</li>
+<li>拷贝文件到docker容器中<br>docker cp a.war mytomcat:/usr/local/tomcat/webapps</li>
+<li>进入交互模式<br>docker exec -it mytomcat /bin/bash</li>
+</ol>
+<h4 id="四、应用"><a href="#四、应用" class="headerlink" title="四、应用"></a>四、应用</h4><p>docker应用之tomcat容器部署web应用</p>
+<p>docker run -d –name mytomcat -p8888(宿主机端口):8080(docker中的端口)</p>
+<p>访问docker中的tomcat ：宿主机IP：映射端口</p>
+<p>docker cp a.war mytomcat:/usr/local/tomcat/webapps</p>
+<p>进入交互模式</p>
+<p>docker exec -it mytomcat /bin/bash</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/19/docket/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cloudera大数据平台搭建" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1199,133 +1329,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/15/flume学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sqoop学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/10/sqoop学习/">sqoop学习</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/10/sqoop学习/" class="archive-article-date">
-  	<time datetime="2017-12-10T03:56:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>sqoop学习</p>
-<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>sqoop是RDBMS和hdfs之间进行数据导入导出的工具，高效的数据导入导出工具。</p>
-<h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><ol>
-<li><p>sqoop2.X安装<br>sqoop2.X包含两部分，server和client<br>server：所有客端的入口点<br>client：可以安装在任何节点上</p>
-</li>
-<li><p>server安装</p>
-<ul>
-<li>确保hadoop可用</li>
-<li>确保HADOOP_HOME环境变量可用</li>
-<li>core-site.xml<br>hadoop.proxyuser.sqoop2.hosts=<em><br>hadoop.proxyuser.sqoop2.groups=</em></li>
-<li>第三方jar包，mysql驱动放到sqoop/tools/lib下即可</li>
-<li>配置PATH</li>
-<li>修改sqoop.properties</li>
-<li>仓库初始化  sqoop2-tool upgrade</li>
-<li>验证是否初始化成功   sqoop2-tool  verify</li>
-<li>server 启动和停止   sqoop2-server start/stop</li>
-</ul>
-</li>
-<li><p>client安装</p>
-<ul>
-<li>将文件拷贝到对应的客户端</li>
-<li>启动客户端shell  sqoop2-shell</li>
-<li>连接到自己的server  set server –host s101  –port  12000 –webapp  sqoop</li>
-<li>验证连接  show version –all</li>
-<li>查看sqoop注册的连接器  show connector</li>
-<li>创建连接（mysql）  create link –connector  generic-jdbc-connector  然后输入一些，driver，url等参数</li>
-<li>创建hdfs连接器<br>create link –connector  hdfs-connector  一些参数</li>
-<li>显示所有连接<br>show link -all  显示细节<br>show link</li>
-<li>创建作业<br>create job -f    “创建的mysql连接器的名字”    -t    “创建的hdfs连接器的名字”  接下来是参数</li>
-<li>显示job<br>show job  -all</li>
-<li>启动作业<br>start job  – name “job的名称” </li>
-</ul>
-</li>
-</ol>
-<h4 id="三、sqoop-1-46使用"><a href="#三、sqoop-1-46使用" class="headerlink" title="三、sqoop 1.46使用"></a>三、sqoop 1.46使用</h4><ol>
-<li>安装</li>
-<li>配置<ul>
-<li>环境变量  SQOOP_HOME</li>
-<li>sqoop-env.sh  保证和hadoop协同<br>export HADOOP_COMMON_HOME=/usr/hadoop<br>export HADOOP_MAPRED_HOME=/usr/hadoop</li>
-</ul>
-</li>
-<li>配置mysql驱动程序，放到sqoop/lib目录下</li>
-<li>验证sqoop安装<br>sqoop-version</li>
-<li>sqoop  导入  从mysql——&gt;hdfs<ul>
-<li>查看帮助  sqoop help</li>
-<li>查看特定指令帮助   sqoop  help  指令</li>
-<li>sqoop import –connect jdbc:mysql://s100:3306/test –driver com.mysql.jdbc.Driver –username root     –password password  –table  mytest  –target-dir  hdfs://s100:8020/user/root/ –where “id”&gt;”1” –increment append（增量导入可选）–check-column id （检查列）</li>
-</ul>
-</li>
-<li>sqoop  将mysql中所有表导入到hdfs<br>sqoop import-all-tables  –connect jdbc:mysql://s100:3306/test –driver com.mysql.jdbc.Driver –username root     –password password    默认使用表名作为目录</li>
-<li>export 导出  hdfs——&gt;mysql<br>sqoop export  –connect jdbc:mysql://s100:3306/test –driver com.mysql.jdbc.Driver –username root     –password password  –table  mytest  –export-dir  hdfs://s100:8020/user/root/ –columns id ,name,age</li>
-<li>导入mysql数据到hive中<br>sqoop import–connect jdbc:mysql://s100:3306/test –driver com.mysql.jdbc.Driver –username root     –password password  –table  mytest  –hive-import   –hive-overwrite  –hive-table myhive（hive中的表名）</li>
-<li>将mysql数据导入到hbase（不要使用它的创建表），需要启动好hbase<br>sqoop import–connect jdbc:mysql://s100:3306/test –driver com.mysql.jdbc.Driver –username root     –password password  –table  mytest –hbase-table us1:t1 –hbase-row-key  id –column-family f1</li>
-<li>创建作业<br>sqoop job –create myjob  sqoop import–connect jdbc:mysql://s100:3306/test –driver com.mysql.jdbc.Driver –username root     –password password  –table  mytest –hbase-table us1:t1 –hbase-row-key  id –column-family f1</li>
-<li>查看所有job列表<br>sqoop job –list</li>
-<li>查看指定job<br>sqoop job –show myjob</li>
-<li>启动job<br>sqoop job -exec myjob</li>
-<li>删除job<br>sqool job –delete myjob</li>
-<li>sqoop的增量导入<ul>
-<li>check-column 检查字段，该字段不能使用varchar类型</li>
-<li>increment  append/lastmodified</li>
-<li>–last-value 最后的值，指定之前导入时候的最大值，指的是mysql中的值，把mysql表中新增加的内容导入到其他的数据库中</li>
-</ul>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/10/sqoop学习/">展开全文 >></a>
         </p>
       
 

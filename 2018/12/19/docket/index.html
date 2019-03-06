@@ -6,27 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>V2Ray快速上手 | zy8las</title>
+  <title>docker学习整理 | zy8las</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="V2Ray快速上手 介绍酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。  V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技">
+  <meta name="description" content="docker学习整理 一、介绍云计算，类似于VM docker 平台，管理部署应用程序，开发容纳，运行应用程序的平台。在容器中安全的运行应用程序。 docker引擎，cs结构的程序，server长时间运行的守护进程，cli客户端命令 docker对象，同时运行多个虚拟机 image 镜像 containers  容器，进程 network 网络 data values 数据卷 docker dae">
 <meta property="og:type" content="article">
-<meta property="og:title" content="V2Ray快速上手">
-<meta property="og:url" content="http://yoursite.com/2018/12/21/墙/index.html">
+<meta property="og:title" content="docker学习整理">
+<meta property="og:url" content="http://yoursite.com/2018/12/19/docket/index.html">
 <meta property="og:site_name" content="zy8las">
-<meta property="og:description" content="V2Ray快速上手 介绍酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。  V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技">
+<meta property="og:description" content="docker学习整理 一、介绍云计算，类似于VM docker 平台，管理部署应用程序，开发容纳，运行应用程序的平台。在容器中安全的运行应用程序。 docker引擎，cs结构的程序，server长时间运行的守护进程，cli客户端命令 docker对象，同时运行多个虚拟机 image 镜像 containers  容器，进程 network 网络 data values 数据卷 docker dae">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/墙/v2ray-core.jpg">
-<meta property="og:image" content="http://yoursite.com/images/墙/v2raycat.jpg">
-<meta property="og:image" content="http://yoursite.com/images/墙/v2rayguan.jpg">
-<meta property="og:image" content="http://yoursite.com/images/墙/file.jpg">
-<meta property="og:image" content="http://yoursite.com/images/墙/v2rayN.jpg">
-<meta property="og:image" content="http://yoursite.com/images/墙/v2rayclient.jpg">
-<meta property="og:image" content="http://yoursite.com/images/墙/id.jpg">
-<meta property="og:updated_time" content="2018-12-21T07:06:20.789Z">
+<meta property="og:updated_time" content="2019-03-06T02:53:43.668Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="V2Ray快速上手">
-<meta name="twitter:description" content="V2Ray快速上手 介绍酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。  V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技">
-<meta name="twitter:image" content="http://yoursite.com/images/墙/v2ray-core.jpg">
+<meta name="twitter:title" content="docker学习整理">
+<meta name="twitter:description" content="docker学习整理 一、介绍云计算，类似于VM docker 平台，管理部署应用程序，开发容纳，运行应用程序的平台。在容器中安全的运行应用程序。 docker引擎，cs结构的程序，server长时间运行的守护进程，cli客户端命令 docker对象，同时运行多个虚拟机 image 镜像 containers  容器，进程 network 网络 data values 数据卷 docker dae">
   
     <link rel="alternative" href="/atom.xml" title="zy8las" type="application/atom+xml">
   
@@ -165,47 +157,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-墙" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-docket" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      V2Ray快速上手
+      docker学习整理
     </h1>
   
 
         
-        <a href="/2018/12/21/墙/" class="archive-article-date">
-  	<time datetime="2018-12-21T06:57:55.973Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
+        <a href="/2018/12/19/docket/" class="archive-article-date">
+  	<time datetime="2018-12-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>V2Ray快速上手</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>酸酸（shadowsocks）和酸酸乳（shadowsocks-R）的技术细节，协议的工作原理已经被发掘得很深了。clowwindy被约去喝茶也不是一天两天的事了。只不过爽爽和酸酸乳用户基数大，所以也不可能一一来河蟹。主要是作为一名开发者，有时被墙对于工作和学习影响都很大。在道听途说之际，打算尝试了解V2ray。 </p>
-<p>V2ray的工作机制要比爽爽和酸酸乳复杂挺多，更关键是其技术比较新。但是，传统的配置也比较复杂，是属于真萌新劝退向工具。不过还好，乾颐堂现任明教教主在其公开课，《教主技术进化论第35期.V2R》的视频里<a href="https://www.bilibili.com/video/av30249805" target="_blank" rel="noopener">这里</a>）有快速上手的讲解，对于萌新来说，可能是一大福音。下面是对其课程的步骤总结。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
-<li><p>下载v2ray的核心程序和v2rayN.exe客户端程序</p>
-<ul>
-<li><p>v2ray核心程序<a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">下载</a></p>
-<p><img src="/images/墙/v2ray-core.jpg" alt="core"></p>
-</li>
+        <p>docker学习整理</p>
+<h4 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h4><p>云计算，类似于VM</p>
+<p>docker 平台，管理部署应用程序，开发容纳，运行应用程序的平台。在容器中安全的运行应用程序。</p>
+<p>docker引擎，cs结构的程序，server长时间运行的守护进程，cli客户端命令</p>
+<p>docker对象，同时运行多个虚拟机</p>
+<p>image 镜像</p>
+<p>containers  容器，进程</p>
+<p>network 网络</p>
+<p>data values 数据卷</p>
+<p>docker daemon 守护进程，docker的守护进程，运行在host之上，不需要直接交互，通过cli访问。</p>
+<p>docker client 接收用户指令，并和docker守护进程通信</p>
+<p>docker image docker镜像，只读模板</p>
+<p>docker registries  注册表，包含镜像库</p>
+<p>docker container docker容器，通过镜像创建容器，每个容器是独立的，安全的运行平台，容器中运行的是docker的组件。</p>
+<h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><p>参考官网 </p>
+<h4 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h4><ol>
+<li>启动/停止<br>service docker start/stop</li>
+<li>验证docker是否启动成功<br>docker run hello-world</li>
+<li>查看docker版本<br>docker version</li>
+<li>查看帮助<br>docker –help   / docker run –help    </li>
+<li>配置开机自启动<br>systemctl enable docker</li>
+<li>查看运行的容器<br>docker ps -a<br>docker  告知os使用docker指令<br>run 子命令创建运行容器<br>hello-world  加载的镜像</li>
+<li>注册docker用户<br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></li>
+<li>查看本地镜像<br>docker images</li>
+<li>构建镜像<ul>
+<li>创建文件<br>touch Dockerfile</li>
+<li>编辑文件<br>FROM docker/whalesay:latest<br>RUN apt-get -y update &amp;&amp; apt-get install  -y fortunes<br>CMD /usr/games/fortune -a |cowsay</li>
+<li>从dockerfile构建镜像文件<br>docker build -t docker-whale . </li>
 </ul>
 </li>
-<li><p>在<a href="https://v2ray.cat/" target="_blank" rel="noopener">v2ray.cat链接</a>或者<a href="https://www.v2ray.com/download/" target="_blank" rel="noopener">v2ray官方下载</a>v2rayN.exe客户端<br><img src="/images/墙/v2raycat.jpg" alt="v2rayvat"><br><img src="/images/墙/v2rayguan.jpg" alt="v2rayguan"><br>得到文件：<img src="/images/墙/file.jpg" alt="file"></p>
-</li>
-<li><p>将核心压缩包解压，将v2rayN解压，将v2rayN解压的文件放到v2ray核心的根目录下，还有一个文件zh-Hans是汉化的，内容如下<img src="/images/墙/v2rayN.jpg" alt="v2ray"><br>运行v2rayN.exe，在任务量会出现其图标，右键“启动http代理”—》“http代理模式”—–》“开启pac并自动配置pac”（意思为国内IP直连，国外IP代理，如果遇见安全软件弹出提示，请允许软件运行更改），然后，退出v2rayN.exe 客户端。再重新双击打开，以便重启服务。如果出现安全提示，请允许软件执行。<img src="/images/墙/v2rayclient.jpg" alt="v2rayclient"></p>
-</li>
-<li><p>配置服务器<br>v2ray可以兼容酸酸和酸酸乳的协议，如果你有酸酸和酸酸乳的服务器节点，同样可以使用。<br>你可以在网上找收费或者免费的站点添加进去。教主在视频里给了两个免费的节点网站（不过都要先架梯子过去）<a href="https://free-ss.site/" target="_blank" rel="noopener">这里1</a>和<a href="https://fangeqiang.com/" target="_blank" rel="noopener">这里2</a>，进入链接后点解免费账号—-》v2ray—-》分享账号<img src="/images/墙/id.jpg" alt="id">,然后将复制vmess中的内容，打开v2rayN客户端，点击服务器—-》从剪切板导入批量url—》添加成功后点击重启服务，翻墙搭建完成。</p>
-<h3 id="手机版"><a href="#手机版" class="headerlink" title="手机版"></a>手机版</h3><ol>
-<li>手机版需要下载bifrost客户端，然后找免费代码</li>
+<li>找到镜像ID<br>Image id</li>
+<li>使用docker login远程登录到docker hub<br>docker login –username=用户名  –email=邮箱</li>
+<li>标记镜像<br>docker tag 镜像id  用户名/hello-world：latest</li>
+<li>使用push命令上传镜像<br>docker push 用户名/hello-world</li>
+<li>删除本地镜像文件<br>docker rmi  -f 镜像id</li>
+<li>使用docker run下载镜像并使用<br>docker run 用户名/hello-world</li>
+<li>运行容器<br>docker run ubuntu /bin/each “hello world”<br>运行交互式容器<br>-t  伪字符终端<br>-i  交互式</li>
+<li>进入容器中可以使用正常的shell指令，exit /ctrl +D 退出交互式</li>
+<li>创建容器以守护进程的方式运行<br>-d 以守护进程的方式</li>
+<li>查看容器的log<br>docker log  容器id</li>
+<li>停止容器<br>docker stop 容器id</li>
+<li>删除容器<br>docker rm 容器id</li>
+<li>删除多个容器<br>docker rm id1 id2</li>
+<li>查看容器<br>docker ps -a</li>
+<li>停止容器<br>docker stop 容器id</li>
+<li>运行容器，使用training/ webapp<br>-d 后台方式<br>-p(小p)映射指定端口<br>-P（大P）映射所有暴露的端口<br>docker run -d -P training/webapp  python app.py<br>docker run -d -p 80:5000 training/webapp  python app.py<br>打开浏览器使用host主机映射的端口，访问虚拟机的客户机web服务器</li>
+<li>查看容器的IP地址<br>docker-machine id 容器id</li>
+<li>查看port子命令<br>docker port –help</li>
+<li>查看容器中指定的端口在宿主机上的映射端口<br>docker port 容器id 5000</li>
+<li>查看web程序的log<br>docker logs -f 容器名称</li>
+<li>查看容器的进程<br>docker top 容器名称/容器id</li>
+<li>检查容器<br>docker inspect 容器名称</li>
+<li>查看容器列表<br>docker ps -l</li>
+<li>删除容器<br>docker rm -f 容器id    （-f强制删除）</li>
+<li>删除镜像<br>docker rmi -f 镜像id  （-f强制删除）</li>
+<li>通过标记运行容器<br>docker run -i -t ubuntu:14.04 /bin/bash 如果只指定ubuntu，则默认使用latest版本</li>
+<li>下载镜像<br>docker pull 镜像名称</li>
+<li>搜索镜像<br>docker search 镜像名称</li>
+<li>提交变化给镜像<br>docker commit -m “说明文字” -a “作者名称” 容器id ubuntu:V2<br>本地产生新的镜像，提交就是写入，保持变化的部分，产生新的镜像</li>
+<li>拷贝文件到docker容器中<br>docker cp a.war mytomcat:/usr/local/tomcat/webapps</li>
+<li>进入交互模式<br>docker exec -it mytomcat /bin/bash</li>
 </ol>
-</li>
-</ol>
+<h4 id="四、应用"><a href="#四、应用" class="headerlink" title="四、应用"></a>四、应用</h4><p>docker应用之tomcat容器部署web应用</p>
+<p>docker run -d –name mytomcat -p8888(宿主机端口):8080(docker中的端口)</p>
+<p>访问docker中的tomcat ：宿主机IP：映射端口</p>
+<p>docker cp a.war mytomcat:/usr/local/tomcat/webapps</p>
+<p>进入交互模式</p>
+<p>docker exec -it mytomcat /bin/bash</p>
 
       
 
@@ -290,7 +329,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/12/21/墙/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/12/19/docket/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,9 +343,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/12/21/墙/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          V2Ray快速上手
+        
+      </div>
+    </a>
   
-    <a href="/2018/12/19/docket/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">docker学习整理</div>
+  
+    <a href="/2018/11/01/cloudera大数据平台搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cloudera大数据平台搭建流程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -333,7 +381,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">2.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手机版"><span class="toc-number">3.</span> <span class="toc-text">手机版</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、介绍"><span class="toc-number">1.</span> <span class="toc-text">一、介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、安装"><span class="toc-number">2.</span> <span class="toc-text">二、安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、使用"><span class="toc-number">3.</span> <span class="toc-text">三、使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、应用"><span class="toc-number">4.</span> <span class="toc-text">四、应用</span></a></li></ol>
                     </div>
                 </span>
             </div>
